@@ -1,344 +1,180 @@
-:root {
-    /* 7. Reconfiguración de Colores Solicitada */
-    --exaver-blue: #2B6CB0;     /* El azul dinámico original de Speaking, ahora en R&W */
-    --exaver-green: #00A859;    /* El verde vibrante original de Final, ahora en Listening */
-    
-    --speaking-gray: #4A5568;   /* Gris balanceado para Speaking */
-    --final-navy: #0F2C59;      /* Azul marino corporativo y elegante para el Cierre */
-    
-    --dark-text: #2d3748;
-    --light-bg: #f3f7fa;
-    --white: #ffffff;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXAVER 1 Candidate Training Course</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-}
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="image_718821.png" alt="EXAVER Oficial" class="nav-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="abrirModal('modal-inicio')">Inicio</a></li>
+                <li><a href="#" onclick="abrirModal('modal-sesiones')">Sesiones</a></li>
+                <li><a href="#" onclick="abrirModal('modal-profesor')">Profesor</a></li>
+                <li><a href="#" onclick="abrirModal('modal-contacto')">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-body {
-    background-color: var(--light-bg);
-    color: var(--dark-text);
-    line-height: 1.6;
-}
+    <main class="hero-cover">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Candidate Training Course</h1>
+                <p class="tagline">EXAVER 1</p>
+                <button class="btn-main" onclick="abrirModal('modal-sesiones')">Ver Sesiones</button>
+            </div>
+        </div>
+    </main>
 
-/* Navegación */
-header {
-    background-color: var(--white);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+    <div id="modal-inicio" class="modal-overlay">
+        <div class="modal-window">
+            <button class="modal-close" onclick="cerrarModal('modal-inicio')">&times;</button>
+            <h2>Bienvenidos al Curso</h2>
+            <hr class="divider">
+            <p class="modal-intro">Curso estratégico diseñado para la preparación óptima del examen de certificación institucional.</p>
+            <div class="alert-box">
+                <p><strong>🚨 Requisito Indispensable (Sesión 00):</strong> Los alumnos deben haber respondido un examen de muestra (Sample Test) antes del inicio del curso[cite: 29].</p>
+            </div>
+        </div>
+    </div>
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1.2rem 2rem;
-}
+    <div id="modal-sesiones" class="modal-overlay">
+        <div class="modal-window modal-wide">
+            <button class="modal-close" onclick="cerrarModal('modal-sesiones')">&times;</button>
+            <h2>Mapa Curricular por Sesiones</h2>
+            <p class="modal-subtitle">Selecciona un bloque numérico para examinar sus objetivos específicos.</p>
+            
+            <div class="modules-grid">
+                <div class="card bg-rw">
+                    <h3>Reading & Writing</h3>
+                    <div class="btn-group">
+                        <button class="btn-session" onclick="verDetalle('1_2')">01/02</button>
+                        <button class="btn-session" onclick="verDetalle('3_4')">03/04</button>
+                        <button class="btn-session" onclick="verDetalle('5_6')">05/06</button>
+                        <button class="btn-session" onclick="verDetalle('7_8')">07/08</button>
+                        <button class="btn-session" onclick="verDetalle('9_10')">09/10</button>
+                    </div>
+                </div>
 
-/* 1. Nombre en mayúsculas completas */
-.logo {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--final-navy);
-    letter-spacing: 1px;
-}
+                <div class="card bg-listening">
+                    <h3>Listening</h3>
+                    <div class="btn-group">
+                        <button class="btn-session" onclick="verDetalle('11')">11</button>
+                        <button class="btn-session" onclick="verDetalle('12')">12</button>
+                        <button class="btn-session" onclick="verDetalle('13')">13</button>
+                        <button class="btn-session" onclick="verDetalle('14')">14</button>
+                    </div>
+                </div>
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2.5rem;
-}
+                <div class="card bg-speaking">
+                    <h3>Speaking</h3>
+                    <div class="btn-group">
+                        <button class="btn-session" onclick="verDetalle('15')">15</button>
+                        <button class="btn-session" onclick="verDetalle('16')">16</button>
+                        <button class="btn-session" onclick="verDetalle('17')">17</button>
+                        <button class="btn-session" onclick="verDetalle('18')">18</button>
+                    </div>
+                </div>
 
-.nav-links a {
-    text-decoration: none;
-    color: var(--dark-text);
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: color 0.2s ease;
-}
+                <div class="card bg-final">
+                    <h3>Final Evaluation</h3>
+                    <div class="btn-group justify-center">
+                        <button class="btn-session long-btn" onclick="verDetalle('19_20')">19/20</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-.nav-links a:hover {
-    color: var(--exaver-blue);
-}
+    <div id="modal-profesor" class="modal-overlay">
+        <div class="modal-window">
+            <button class="modal-close" onclick="cerrarModal('modal-profesor')">&times;</button>
+            <h2>Profesor</h2>
+            <hr class="divider">
+            <p class="text-content">Profesor e investigador especializado en la instrucción estratégica del idioma inglés y el desarrollo de competencias para acreditaciones estandarizadas en entornos académicos universitarios.</p>
+        </div>
+    </div>
 
-/* Hero Section */
-.hero-section {
-    background: linear-gradient(135deg, #1A365D 0%, var(--final-navy) 100%);
-    color: var(--white);
-    padding: 7rem 2rem;
-    text-align: center;
-}
+    <div id="modal-contacto" class="modal-overlay">
+        <div class="modal-window">
+            <button class="modal-close" onclick="cerrarModal('modal-contacto')">&times;</button>
+            <h2>Contacto</h2>
+            <hr class="divider">
+            <p class="text-content">¿Tienes alguna duda sobre la gestión de tus materiales o las sesiones informativas?</p>
+            <a href="mailto:tu-correo@uv.mx" class="btn-action">Enviar Correo Electrónico</a>
+        </div>
+    </div>
 
-.hero-content h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-}
+    <script>
+        // Control básico de modales primarios
+        function abrirModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+        function cerrarModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
 
-/* 3. Estilo destacado para EXAVER 1 */
-.tagline {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #4FD1C5;
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-}
+        // Datos en español de los mapas curriculares
+        const datosSesiones = {
+            "1_2": { mod: "Reading & Writing", t: "Sesiones 01 / 02", f: "Comprensión global de avisos y señalizaciones [cite: 15].", o: ["Identificar intenciones comunicativas en textos cortos[cite: 15].", "Aprender mecánicas de descarte lógico de distractores semánticos."] },
+            "3_4": { mod: "Reading & Writing", t: "Sesiones 03 / 04", f: "Reforzamiento de emparejamiento de textos complejos[cite: 19].", o: ["Escanear información bajo presión de tiempo coordinado.", "Cruzar restricciones léxicas en perfiles múltiples."] },
+            "5_6": { mod: "Reading & Writing", t: "Sesiones 05 / 06", f: "Procesamiento de Cloze estructural y gramatical[cite: 23].", o: ["Analizar la cohesión mediante conectores y pronombres de referencia.", "Evaluar contextos gramaticales anteriores y posteriores."] },
+            "7_8": { mod: "Reading & Writing", t: "Sesiones 07 / 08", f: "Comprensión detallada de opiniones y textos extensos[cite: 26].", o: ["Discernir de manera puntual entre datos factuales y opiniones implícitas.", "Mapear líneas de evidencia textual directa."] },
+            "9_10": { mod: "Reading & Writing", t: "Sesiones 09 / 10", f: "Producción de textos escritos estructurados[cite: 31].", o: ["Aplicar rúbricas de cumplimiento de tarea y rango léxico.", "Desarrollar plantillas de redacción formal e informal."] },
+            "11": { mod: "Listening", t: "Sesión 11", f: "Identificación de datos específicos en monólogos cortos[cite: 93].", o: ["Monitorear distractores auditivos recurrentes.", "Retener información numérica y de localización precisa."] },
+            "12": { mod: "Listening", t: "Sesión 12", f: "Reforzamiento de completado de notas y dictados[cite: 96].", o: ["Predecir categorías gramaticales antes de las reproducciones.", "Asegurar ortografía precisa bajo velocidad de examen."] },
+            "13": { mod: "Listening", t: "Sesión 13", f: "Identificación de posturas en múltiples hablantes[cite: 99].", o: ["Interpretar estados de ánimo y lenguaje idiomático.", "Discernir intenciones abstractas más allá de palabras literales."] },
+            "14": { mod: "Listening", t: "Sesión 14", f: "Seguimiento de narrativas y diálogos extensos[cite: 104].", o: ["Mantener concentración sostenida en audios de larga duración.", "Detectar cambios discursivos clave para avanzar preguntas."] },
+            "15": { mod: "Speaking", t: "Sesión 15", f: "Entrevista personal e interacción social directa [cite: 117].", o: ["Expandir respuestas cortas de manera natural [cite: 117].", "Estructurar respuestas combinando justificación y anécdotas[cite: 117]."] },
+            "16": { mod: "Speaking", t: "Sesión 16", f: "Reforzamiento de tareas colaborativas en parejas [cite: 118].", o: ["Manejar turnos de habla y estrategias de negociación fluida [cite: 118].", "Establecer diálogos de balance mutuo en la distribución de tiempo[cite: 118]."] },
+            "17": { mod: "Speaking", t: "Sesión 17", f: "Desarrollo del turno monologal extendido [cite: 117].", o: ["Organizar descripciones visuales mediante conectores de espacio [cite: 117].", "Aplicar técnicas de circunloquio ante vacíos de vocabulario[cite: 117]."] },
+            "18": { mod: "Speaking", t: "Sesión 18", f: "Práctica general con evaluaciones formativas integrales [cite: 118].", o: ["Simular tiempos y dinámicas de interacción bajo rúbrica real [cite: 118].", "Co-evaluar el desempeño oral usando listas de verificación objetivas[cite: 118]."] },
+            "19_20": { mod: "Final Evaluation", t: "Sesiones 19 / 20", f: "Simulacro real integrado y cierre estratégico del curso [cite: 132].", o: ["Administrar los tiempos de resolución y vaciado de respuestas en bloques reales (1.5 hrs) [cite: 132].", "Recibir diagnósticos de error para prevención sistemática final[cite: 132]."] }
+        };
 
-.btn {
-    background-color: var(--exaver-blue);
-    color: var(--white);
-    padding: 0.9rem 2.2rem;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 700;
-    box-shadow: 0 4px 14px rgba(43, 108, 176, 0.4);
-    transition: all 0.3s ease;
-}
+        // Redirección interactiva real a nueva pestaña con parámetros limpios
+        function verDetalle(id) {
+            if(datosSesiones[id]) {
+                const url = window.location.origin + window.location.pathname + '?detalle=' + id;
+                window.open(url, '_blank');
+            }
+        }
 
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(43, 108, 176, 0.6);
-}
-
-/* 4. Barra de Prerrequisito en español */
-.prerequisite-bar {
-    background-color: #FFF5F5;
-    color: #C53030;
-    text-align: center;
-    padding: 1.2rem 1rem;
-    font-size: 1.05rem;
-    font-weight: 500;
-    border-bottom: 2px solid #FED7D7;
-}
-
-/* Contenedor e Interactividad de Tarjetas */
-.course-container {
-    max-width: 1200px;
-    margin: 5rem auto;
-    padding: 0 2rem;
-}
-
-.course-container h2 {
-    text-align: center;
-    color: var(--final-navy);
-    font-size: 2.4rem;
-    font-weight: 800;
-}
-
-.subtitle {
-    text-align: center;
-    color: #4A5568;
-    margin-bottom: 4rem;
-    font-size: 1.1rem;
-}
-
-.modules-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-}
-
-.module-card {
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-/* 8. Dinamismo visual al pasar el cursor */
-.module-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 35px rgba(0,0,0,0.07);
-}
-
-.module-header {
-    padding: 1.8rem;
-    color: var(--white);
-}
-
-.module-header h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-}
-
-.module-header span {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    font-weight: 500;
-}
-
-/* Asignaciones de color solicitadas */
-.m-rw { background-color: var(--exaver-blue); }
-.m-listening { background-color: var(--exaver-green); }
-.m-speaking { background-color: var(--speaking-gray); }
-.m-final { background-color: var(--final-navy); }
-
-.module-body {
-    padding: 1.8rem;
-}
-
-.module-body ul {
-    list-style: none;
-}
-
-.module-body li {
-    margin-bottom: 1.2rem;
-}
-
-.session-link {
-    text-decoration: none;
-    color: var(--dark-text);
-    font-size: 0.95rem;
-    display: block;
-    transition: color 0.2s ease;
-}
-
-/* 8. Animación y cambio visual interactivo al pasar el cursor por cada sesión */
-.session-link:hover {
-    color: var(--exaver-blue);
-    font-weight: 600;
-    padding-left: 4px;
-}
-
-/* Secciones Adicionales */
-.about-section, .contact-section {
-    max-width: 800px;
-    margin: 5rem auto;
-    padding: 3rem 2rem;
-    text-align: center;
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.02);
-}
-
-.about-section h2, .contact-section h2 {
-    color: var(--final-navy);
-    margin-bottom: 1rem;
-    font-weight: 800;
-}
-
-.btn-contact {
-    display: inline-block;
-    margin-top: 1.5rem;
-    background-color: var(--final-navy);
-    color: var(--white);
-    padding: 0.8rem 2rem;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: opacity 0.2s;
-}
-
-.btn-contact:hover {
-    opacity: 0.9;
-}
-
-footer {
-    text-align: center;
-    padding: 2.5rem;
-    background-color: #1A202C;
-    color: #EDF2F7;
-    font-size: 0.9rem;
-}
-
-/* ==========================================================================
-   ESTILOS DINÁMICOS PARA LA VENTANA DE DETALLES (PUNTO 6 Y 8)
-   ========================================================================== */
-.session-detail-view {
-    background: radial-gradient(circle, #EDF2F7 0%, #E2E8F0 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.detail-card {
-    background: var(--white);
-    max-width: 650px;
-    width: 100%;
-    padding: 3rem;
-    border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    position: relative;
-}
-
-.detail-badge {
-    background-color: #E2E8F0;
-    color: var(--dark-text);
-    padding: 0.3rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: inline-block;
-    margin-bottom: 1rem;
-}
-
-.detail-card h1 {
-    color: var(--final-navy);
-    font-size: 1.8rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-}
-
-.detail-card hr {
-    border: 0;
-    height: 2px;
-    background: #E2E8F0;
-    margin-bottom: 2rem;
-}
-
-.detail-section {
-    margin-bottom: 1.8rem;
-}
-
-.detail-section h3 {
-    color: var(--exaver-blue);
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-}
-
-.detail-section ul {
-    padding-left: 1.2rem;
-}
-
-.detail-section li {
-    margin-bottom: 0.5rem;
-}
-
-.btn-close {
-    background-color: #718096;
-    color: var(--white);
-    border: none;
-    padding: 0.7rem 1.8rem;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: background 0.2s;
-}
-
-.btn-close:hover {
-    background-color: #4A5568;
-}
-
-/* Animaciones */
-.animate-fade {
-    animation: fadeIn 0.4s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.96); }
-    to { opacity: 1; transform: scale(1); }
-}
+        // Renderizado automático si la ventana detecta que es una pestaña de detalle
+        const params = new URLSearchParams(window.location.search);
+        const detalleId = params.get('detalle');
+        if (detalleId && datosSesiones[detalleId]) {
+            const current = datosSesiones[detalleId];
+            let listHtml = "";
+            current.o.forEach(item => { listHtml += `<li>${item}</li>`; });
+            
+            document.body.innerHTML = `
+                <div class="standalone-detail-page animate-fade">
+                    <div class="detail-box">
+                        <span class="badge">${current.mod}</span>
+                        <h1>${current.t}</h1>
+                        <hr class="divider">
+                        <div class="info-block">
+                            <h4>🎯 Enfoque Principal:</h4>
+                            <p>${current.f}</p>
+                        </div>
+                        <div class="info-block">
+                            <h4>🚀 Objetivos Estratégicos:</h4>
+                            <ul>${listHtml}</ul>
+                        </div>
+                        <button onclick="window.close()" class="btn-action">Cerrar esta Ventana</button>
+                    </div>
+                </div>
+            `;
+            document.body.style.background = "#f3f7fa";
+        }
+    </script>
+</body>
+</html>

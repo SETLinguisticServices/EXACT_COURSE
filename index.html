@@ -4,183 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXAVER 1 Candidate Training Course</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. Nombre EXAVER en mayúsculas y 2. Orden de botones de acción solicitado -->
     <header>
         <nav class="navbar">
-            <div class="logo">EXAVER</div>
+            <div class="logo-container">
+                <img src="image_718821.png" alt="EXAVER Oficial" class="nav-logo">
+            </div>
             <ul class="nav-links">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#course">Sesiones</a></li>
-                <li><a href="#about">Profesor</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#" onclick="abrirModal('modal-inicio')">Inicio</a></li>
+                <li><a href="#" onclick="abrirModal('modal-sesiones')">Sesiones</a></li>
+                <li><a href="#" onclick="abrirModal('modal-profesor')">Profesor</a></li>
+                <li><a href="#" onclick="abrirModal('modal-contacto')">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <div id="main-content">
-        <!-- 3. Cambio de leyenda por "EXAVER 1" -->
-        <section id="home" class="hero-section">
+    <main class="hero-cover">
+        <div class="hero-overlay">
             <div class="hero-content">
-                <h1>EXAVER Candidate Training Course</h1>
+                <h1>Candidate Training Course</h1>
                 <p class="tagline">EXAVER 1</p>
-                <a href="#course" class="btn">Explorar Sesiones</a>
+                <button class="btn-main" onclick="abrirModal('modal-sesiones')">Ver Sesiones</button>
             </div>
-        </section>
+        </div>
+    </main>
 
-        <!-- 4. Leyenda de Requisito Indispensable completamente en español -->
-        <section class="prerequisite-bar">
-            <div class="container">
-                <p><strong>🚨 Requisito Indispensable (Sesión 00):</strong> Los alumnos deben haber respondido un examen de muestra (Sample Test) antes del inicio del curso.</p>
+    <div id="modal-inicio" class="modal-overlay">
+        <div class="modal-window">
+            <button class="modal-close" onclick="cerrarModal('modal-inicio')">&times;</button>
+            <h2>Bienvenidos al Curso</h2>
+            <hr class="divider">
+            <p class="modal-intro">Curso estratégico diseñado para la preparación óptima del examen de certificación institucional.</p>
+            <div class="alert-box">
+                <p><strong>🚨 Requisito Indispensable (Sesión 00):</strong> Los alumnos deben haber respondido un examen de muestra (Sample Test) antes del inicio del curso[cite: 29].</p>
             </div>
-        </section>
-
-        <!-- 5. Información en español manteniendo habilidades en inglés -->
-        <section id="course" class="course-container">
-            <h2>Estructura del Curso por Sesiones</h2>
-            <p class="subtitle">Haz clic en cualquier sesión para abrir en una pestaña nueva los detalles y objetivos específicos de aprendizaje.</p>
-
-            <div class="modules-grid">
-                
-                <!-- Módulo 1: Reading & Writing (7. Azul de Speaking) -->
-                <div class="module-card">
-                    <div class="module-header m-rw">
-                        <h3>Reading & Writing</h3>
-                        <span>Sesiones 01 - 10</span>
-                    </div>
-                    <div class="module-body">
-                        <ul>
-                            <li><a href="?sesion=1_2" target="_blank" class="session-link"><strong>01/02:</strong> Presentación de Part 1 y asignación de tareas.</a></li>
-                            <li><a href="?sesion=3_4" target="_blank" class="session-link"><strong>03/04:</strong> Reforzamiento de Part 2 y asignación de tareas.</a></li>
-                            <li><a href="?sesion=5_6" target="_blank" class="session-link"><strong>05/06:</strong> Presentación de Part 3 y asignación de tareas.</a></li>
-                            <li><a href="?sesion=7_8" target="_blank" class="session-link"><strong>07/08:</strong> Presentación de Part 4 y asignación de tareas.</a></li>
-                            <li><a href="?sesion=9_10" target="_blank" class="session-link"><strong>09/10:</strong> Presentación de Part 5 y enfoque en producción escrita.</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Módulo 2: Listening (7. Verde de Final Evaluation) -->
-                <div class="module-card">
-                    <div class="module-header m-listening">
-                        <h3>Listening</h3>
-                        <span>Sesiones 11 - 14</span>
-                    </div>
-                    <div class="module-body">
-                        <ul>
-                            <li><a href="?sesion=11" target="_blank" class="session-link"><strong>11:</strong> Presentación de Part 1 y asignación de tareas.</a></li>
-                            <li><a href="?sesion=12" target="_blank" class="session-link"><strong>12:</strong> Reforzamiento de Part 2 y asignación de tareas.</a></li>
-                            <li><a href="?sesion=13" target="_blank" class="session-link"><strong>13:</strong> Presentación de Part 3 y asignación de tareas.</a></li>
-                            <li><a href="?sesion=14" target="_blank" class="session-link"><strong>14:</strong> Presentación de Part 4 y asignación de tareas.</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Módulo 3: Speaking (Gris Oscuro Balanceado) -->
-                <div class="module-card">
-                    <div class="module-header m-speaking">
-                        <h3>Speaking</h3>
-                        <span>Sesiones 15 - 18</span>
-                    </div>
-                    <div class="module-body">
-                        <ul>
-                            <li><a href="?sesion=15" target="_blank" class="session-link"><strong>15:</strong> Presentación de Part 1 y asignación de tareas.</a></li>
-                            <li><a href="?sesion=16" target="_blank" class="session-link"><strong>16:</strong> Reforzamiento de Part 2 y asignación de tareas.</a></li>
-                            <li><a href="?sesion=17" target="_blank" class="session-link"><strong>17:</strong> Presentación de Part 3 y asignación de tareas.</a></li>
-                            <li><a href="?sesion=18:</strong> Práctica de Speaking y evaluación formativa.</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Módulo 4: Final Evaluation (Azul Marino Corporativo) -->
-                <div class="module-card">
-                    <div class="module-header m-final">
-                        <h3>Final Evaluation</h3>
-                        <span>Sesiones 19 - 20</span>
-                    </div>
-                    <div class="module-body">
-                        <ul>
-                            <li><a href="?sesion=19" target="_blank" class="session-link"><strong>19:</strong> Práctica de examen simulado completo (1.5 Horas).</a></li>
-                            <li><a href="?sesion=20" target="_blank" class="session-link"><strong>20:</strong> Retroalimentación diagnóstica y cierre estratégico.</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Sección Profesor -->
-        <section id="about" class="about-section">
-            <h2>Profesor</h2>
-            <p>Profesor e investigador enfocado en el desarrollo de metodologías y estrategias efectivas para la preparación de exámenes internacionales y certificaciones institucionales.</p>
-        </section>
-
-        <!-- Sección de Contacto -->
-        <section id="contact" class="contact-section">
-            <h2>Contacto</h2>
-            <p>¿Tienes preguntas sobre el mapa curricular, los horarios o las evaluaciones de muestra?</p>
-            <a href="mailto:tu-correo@uv.mx" class="btn-contact">Enviar Mensaje Electrónico</a>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 EXAVER Training Course. Diseñado para el éxito del candidato.</p>
-        </footer>
+        </div>
     </div>
 
-    <!-- 6 y 8. Lógica dinámica interactiva para ventanas secundarias de las sesiones -->
+    <div id="modal-sesiones" class="modal-overlay">
+        <div class="modal-window modal-wide">
+            <button class="modal-close" onclick="cerrarModal('modal-sesiones')">&times;</button>
+            <h2>Mapa Curricular por Sesiones</h2>
+            <p class="modal-subtitle">Selecciona un bloque numérico para examinar sus objetivos específicos.</p>
+            
+            <div class="modules-grid">
+                <div class="card bg-rw">
+                    <h3>Reading & Writing</h3>
+                    <div class="btn-group">
+                        <button class="btn-session" onclick="verDetalle('1_2')">01/02</button>
+                        <button class="btn-session" onclick="verDetalle('3_4')">03/04</button>
+                        <button class="btn-session" onclick="verDetalle('5_6')">05/06</button>
+                        <button class="btn-session" onclick="verDetalle('7_8')">07/08</button>
+                        <button class="btn-session" onclick="verDetalle('9_10')">09/10</button>
+                    </div>
+                </div>
+
+                <div class="card bg-listening">
+                    <h3>Listening</h3>
+                    <div class="btn-group">
+                        <button class="btn-session" onclick="verDetalle('11')">11</button>
+                        <button class="btn-session" onclick="verDetalle('12')">12</button>
+                        <button class="btn-session" onclick="verDetalle('13')">13</button>
+                        <button class="btn-session" onclick="verDetalle('14')">14</button>
+                    </div>
+                </div>
+
+                <div class="card bg-speaking">
+                    <h3>Speaking</h3>
+                    <div class="btn-group">
+                        <button class="btn-session" onclick="verDetalle('15')">15</button>
+                        <button class="btn-session" onclick="verDetalle('16')">16</button>
+                        <button class="btn-session" onclick="verDetalle('17')">17</button>
+                        <button class="btn-session" onclick="verDetalle('18')">18</button>
+                    </div>
+                </div>
+
+                <div class="card bg-final">
+                    <h3>Final Evaluation</h3>
+                    <div class="btn-group justify-center">
+                        <button class="btn-session long-btn" onclick="verDetalle('19_20')">19/20</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-profesor" class="modal-overlay">
+        <div class="modal-window">
+            <button class="modal-close" onclick="cerrarModal('modal-profesor')">&times;</button>
+            <h2>Profesor</h2>
+            <hr class="divider">
+            <p class="text-content">Profesor e investigador especializado en la instrucción estratégica del idioma inglés y el desarrollo de competencias para acreditaciones estandarizadas en entornos académicos universitarios.</p>
+        </div>
+    </div>
+
+    <div id="modal-contacto" class="modal-overlay">
+        <div class="modal-window">
+            <button class="modal-close" onclick="cerrarModal('modal-contacto')">&times;</button>
+            <h2>Contacto</h2>
+            <hr class="divider">
+            <p class="text-content">¿Tienes alguna duda sobre la gestión de tus materiales o las sesiones informativas?</p>
+            <a href="mailto:tu-correo@uv.mx" class="btn-action">Enviar Correo Electrónico</a>
+        </div>
+    </div>
+
     <script>
-        const mapaDetalles = {
-            "1_2": { modulo: "Reading & Writing", titulo: "Sesiones 01 & 02: Reading Part 1 – Comprensión Global y Señalizaciones", foco: "Análisis de textos cortos del mundo real (avisos, correos, mensajes).", objetivos: ["Identificar el propósito comunicativo y el contexto de los textos de manera rápida.", "Aprender mecánicas de descarte analizando por qué los 'distractores' semánticos parecen correctos."], tareas: "Ejercicios interactivos de mapeo de sinónimos y emparejamiento contextual." },
-            "3_4": { modulo: "Reading & Writing", titulo: "Sesiones 03 & 04: Reading Part 2 – Emparejamiento de Textos y Cohesión", foco: "Conectar descripciones cortas con perfiles de candidatos o bases de información.", objetivos: ["Dominar el escaneo rápido (skimming y scanning) bajo restricciones de tiempo crítico.", "Aislar palabras clave en perfiles complejos para aplicar técnicas de exclusión rápida."], tareas: "Prácticas intensivas de emparejamiento negativo bajo reloj." },
-            "5_6": { modulo: "Reading & Writing", titulo: "Sesiones 05 & 06: Reading Part 3 – Rellenado de Espacios Estructurales", foco: "Procesamiento de textos largos con oraciones o palabras faltantes (Cloze).", objetivos: ["Entender la cohesión gramatical usando palabras de referencia (pronombres, conectores).", "Aprender a justificar la selección de una respuesta analizando los contextos previos y posteriores."], tareas: "Análisis gramatical antes y después del espacio asignado en muestras." },
-            "7_8": { modulo: "Reading & Writing", titulo: "Sesiones 07 & 08: Reading Part 4 – Comprensión Detallada y Lexical Cloze", foco: "Textos de comprensión profunda enfocados en actitudes, opiniones y estructuras líricas.", objetivos: ["Diferenciar de manera precisa entre hechos explícitos y opiniones implícitas del autor.", "Localizar evidencias en el texto para validar opciones múltiples."], tareas: "Búsqueda interactiva de líneas de evidencia textual." },
-            "9_10": { modulo: "Reading & Writing", titulo: "Sesiones 09 & 10: Reading Part 5 y Producción de Escritura", foco: "Transición del procesamiento pasivo a la generación activa de correos, cartas o ensayos cortos.", objetivos: ["Dominar la rúbrica oficial de EXAVER: Cumplimiento de Tarea, Organización y Recursos Léxicos.", "Estructurar plantillas fijas tanto para contextos de producción formal como informal."], tareas: "Calificación simulada interactiva utilizando textos modelo." },
-            "11": { modulo: "Listening", titulo: "Sesión 11: Listening Part 1 – Información Discreta y Monólogos Cortos", foco: "Identificación de datos específicos (horas, precios, ubicaciones) en audios independientes.", objetivos: ["Manejar el estrés acústico inicial durante la prueba.", "Evitar errores de selección temprana causados por las correcciones en vivo de los hablantes."], tareas: "Simulación de audios con trampas informativas integradas." },
-            "12": { modulo: "Listening", titulo: "Sesión 12: Listening Part 2 – Completado de Frases y Notas", foco: "Rellenar resúmenes u hojas de notas a partir de un monólogo o entrevista larga.", objetivos: ["Predecir categorías gramaticales (sustantivos, números, verbos) antes de que el audio inicie.", "Verificar precisiones fonológicas críticas en terminaciones plurales o de tiempo."], tareas: "Predicción de partes de la oración en notas de muestra." },
-            "13": { modulo: "Listening", titulo: "Sesión 13: Listening Part 3 – Emparejamiento de Múltiples Hablantes", foco: "Escuchar monólogos cortos donde diferentes personas opinan sobre un tema en común.", objetivos: ["Identificar la actitud, el estado de ánimo y sinónimos de sentimientos abstractos.", "Superar el uso de vocabulario literal para enfocarse en la intención discursiva."], tareas: "Mapeo tonal de expresiones y modismos comunes del examen." },
-            "14": { modulo: "Listening", titulo: "Sesión 14: Listening Part 4 – Seguimiento de Conversaciones Extendidas", foco: "Entrevistas largas que requieren rastrear un flujo continuo de ideas u opiniones.", objetivos: ["Mantener la concentración mental sostenida durante audios de 4 a 5 minutos continuos.", "Detectar marcadores de transición de voz que indican el avance a la siguiente pregunta."], tareas: "Práctica dirigida utilizando indicadores de cambio discursivo." },
-            "15": { modulo: "Speaking", titulo: "Sesión 15: Speaking Part 1 – Entrevista Personal e Interacción Social", foco: "Respuestas ágiles a preguntas directas del examinador sobre rutinas, metas y estudios.", objetivos: ["Superar las respuestas automatizadas de una sola palabra.", "Desarrollar la fórmula estructural de responder, justificar y dar un ejemplo anecdótico."], tareas: "Prácticas en parejas para la extensión natural del discurso oral." },
-            "16": { modulo: "Speaking", titulo: "Sesión 16: Speaking Part 2 – Tarea Colaborativa Dinámica", foco: "Escenarios interactivos evaluados en parejas utilizando estímulos visuales.", objetivos: ["Dominar la gestión de turnos de habla e interrupción formal y cortés.", "Garantizar una distribución equitativa del tiempo con el compañero asignado."], tareas: "Ejercicios prácticos con la técnica de diálogo de ida y vuelta continua." },
-            "17": { modulo: "Speaking", titulo: "Sesión 17: Speaking Part 3 – Turno Individual Extendido", foco: "Producción continua e independiente describiendo temáticas específicas sin asistencia.", objetivos: ["Aprender a estructurar un mini-monólogo ordenado usando conectores lógicos.", "Resolver lagunas de vocabulario técnico mediante la paráfrasis sin recurrir al español."], tareas: "Entrenamiento dinámico de circunloquios (explicar un concepto sin decir su nombre)." },
-            "18": { modulo: "Speaking", titulo: "Sesión 18: Simulación Completa y Evaluación Formativa", foco: "Simulacros de examen oral con tiempos rigurosos y criterios de evaluación reales.", objetivos: ["Adaptar el lenguaje corporal y el manejo del estrés al ambiente físico del aula de examen.", "Aprender a co-evaluar usando listas de control simplificadas de la rúbrica."], tareas: "Sesiones de auditoría cruzada con roles alternados de examinador/candidato." },
-            "19": { modulo: "Final Evaluation", titulo: "Sesión 19: Simulación Real de Examen (1.5 Horas)", foco: "Práctica masiva integrada bajo condiciones e intervalos estrictos oficiales.", objetivos: ["Medir la resistencia cognitiva ante la fatiga del examen real.", "Calibrar los tiempos individuales destinados al llenado final de las hojas de respuestas."], tareas: "Aplicación controlada y cronometrada del instrumento de evaluación final." },
-            "20": { modulo: "Final Evaluation", titulo: "Sesión 20: Análisis Diagnóstico y Cierre Estratégico", foco: "Revisión pormenorizada de los datos del simulacro general y tendencias de error.", objetivos: ["Identificar patrones de errores sistemáticos para corregirlos conscientemente.", "Consolidar la seguridad del candidato mediante planes finales personalizados de administración del tiempo."], tareas: "Elaboración del plan personal de prevención de errores en el examen." }
+        // Control básico de modales primarios
+        function abrirModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+        function cerrarModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        // Datos en español de los mapas curriculares
+        const datosSesiones = {
+            "1_2": { mod: "Reading & Writing", t: "Sesiones 01 / 02", f: "Comprensión global de avisos y señalizaciones [cite: 15].", o: ["Identificar intenciones comunicativas en textos cortos[cite: 15].", "Aprender mecánicas de descarte lógico de distractores semánticos."] },
+            "3_4": { mod: "Reading & Writing", t: "Sesiones 03 / 04", f: "Reforzamiento de emparejamiento de textos complejos[cite: 19].", o: ["Escanear información bajo presión de tiempo coordinado.", "Cruzar restricciones léxicas en perfiles múltiples."] },
+            "5_6": { mod: "Reading & Writing", t: "Sesiones 05 / 06", f: "Procesamiento de Cloze estructural y gramatical[cite: 23].", o: ["Analizar la cohesión mediante conectores y pronombres de referencia.", "Evaluar contextos gramaticales anteriores y posteriores."] },
+            "7_8": { mod: "Reading & Writing", t: "Sesiones 07 / 08", f: "Comprensión detallada de opiniones y textos extensos[cite: 26].", o: ["Discernir de manera puntual entre datos factuales y opiniones implícitas.", "Mapear líneas de evidencia textual directa."] },
+            "9_10": { mod: "Reading & Writing", t: "Sesiones 09 / 10", f: "Producción de textos escritos estructurados[cite: 31].", o: ["Aplicar rúbricas de cumplimiento de tarea y rango léxico.", "Desarrollar plantillas de redacción formal e informal."] },
+            "11": { mod: "Listening", t: "Sesión 11", f: "Identificación de datos específicos en monólogos cortos[cite: 93].", o: ["Monitorear distractores auditivos recurrentes.", "Retener información numérica y de localización precisa."] },
+            "12": { mod: "Listening", t: "Sesión 12", f: "Reforzamiento de completado de notas y dictados[cite: 96].", o: ["Predecir categorías gramaticales antes de las reproducciones.", "Asegurar ortografía precisa bajo velocidad de examen."] },
+            "13": { mod: "Listening", t: "Sesión 13", f: "Identificación de posturas en múltiples hablantes[cite: 99].", o: ["Interpretar estados de ánimo y lenguaje idiomático.", "Discernir intenciones abstractas más allá de palabras literales."] },
+            "14": { mod: "Listening", t: "Sesión 14", f: "Seguimiento de narrativas y diálogos extensos[cite: 104].", o: ["Mantener concentración sostenida en audios de larga duración.", "Detectar cambios discursivos clave para avanzar preguntas."] },
+            "15": { mod: "Speaking", t: "Sesión 15", f: "Entrevista personal e interacción social directa [cite: 117].", o: ["Expandir respuestas cortas de manera natural [cite: 117].", "Estructurar respuestas combinando justificación y anécdotas[cite: 117]."] },
+            "16": { mod: "Speaking", t: "Sesión 16", f: "Reforzamiento de tareas colaborativas en parejas [cite: 118].", o: ["Manejar turnos de habla y estrategias de negociación fluida [cite: 118].", "Establecer diálogos de balance mutuo en la distribución de tiempo[cite: 118]."] },
+            "17": { mod: "Speaking", t: "Sesión 17", f: "Desarrollo del turno monologal extendido [cite: 117].", o: ["Organizar descripciones visuales mediante conectores de espacio [cite: 117].", "Aplicar técnicas de circunloquio ante vacíos de vocabulario[cite: 117]."] },
+            "18": { mod: "Speaking", t: "Sesión 18", f: "Práctica general con evaluaciones formativas integrales [cite: 118].", o: ["Simular tiempos y dinámicas de interacción bajo rúbrica real [cite: 118].", "Co-evaluar el desempeño oral usando listas de verificación objetivas[cite: 118]."] },
+            "19_20": { mod: "Final Evaluation", t: "Sesiones 19 / 20", f: "Simulacro real integrado y cierre estratégico del curso [cite: 132].", o: ["Administrar los tiempos de resolución y vaciado de respuestas en bloques reales (1.5 hrs) [cite: 132].", "Recibir diagnósticos de error para prevención sistemática final[cite: 132]."] }
         };
 
+        // Redirección interactiva real a nueva pestaña con parámetros limpios
+        function verDetalle(id) {
+            if(datosSesiones[id]) {
+                const url = window.location.origin + window.location.pathname + '?detalle=' + id;
+                window.open(url, '_blank');
+            }
+        }
+
+        // Renderizado automático si la ventana detecta que es una pestaña de detalle
         const params = new URLSearchParams(window.location.search);
-        const sesionId = params.get('sesion');
-
-        if (sesionId && mapaDetalles[sesionId]) {
-            const data = mapaDetalles[sesionId];
-            document.title = `Detalles - ${data.titulo}`;
+        const detalleId = params.get('detalle');
+        if (detalleId && datosSesiones[detalleId]) {
+            const current = datosSesiones[detalleId];
+            let listHtml = "";
+            current.o.forEach(item => { listHtml += `<li>${item}</li>`; });
             
-            let objetivosHtml = "";
-            data.objetivos.forEach(obj => { objetivosHtml += `<li>${obj}</li>`; });
-
             document.body.innerHTML = `
-                <div class="session-detail-view animate-fade">
-                    <div class="detail-card">
-                        <span class="detail-badge">${data.modulo}</span>
-                        <h1>${data.titulo}</h1>
-                        <hr>
-                        <div class="detail-section">
-                            <h3>🎯 Foco de la Sesión:</h3>
-                            <p>${data.foco}</p>
+                <div class="standalone-detail-page animate-fade">
+                    <div class="detail-box">
+                        <span class="badge">${current.mod}</span>
+                        <h1>${current.t}</h1>
+                        <hr class="divider">
+                        <div class="info-block">
+                            <h4>🎯 Enfoque Principal:</h4>
+                            <p>${current.f}</p>
                         </div>
-                        <div class="detail-section">
-                            <h3>🚀 Objetivos Críticos:</h3>
-                            <ul>${objetivosHtml}</ul>
+                        <div class="info-block">
+                            <h4>🚀 Objetivos Estratégicos:</h4>
+                            <ul>${listHtml}</ul>
                         </div>
-                        <div class="detail-section">
-                            <h3>📝 Trabajo Práctico / Tareas:</h3>
-                            <p>${data.tareas}</p>
-                        </div>
-                        <button onclick="window.close()" class="btn-close">Cerrar Ventana</button>
+                        <button onclick="window.close()" class="btn-action">Cerrar esta Ventana</button>
                     </div>
                 </div>
             `;
+            document.body.style.background = "#f3f7fa";
         }
     </script>
 </body>
