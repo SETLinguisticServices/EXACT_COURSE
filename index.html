@@ -5,7 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXAVER 1 Candidate Training Course</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --exaver-blue: #2B6CB0;     
+            --exaver-green: #00A859;    
+            --speaking-gray: #4A5568;   
+            --final-navy: #0F2C59;      
+            --dark-text: #2d3748;
+            --white: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body, html { height: 100%; background-color: var(--final-navy); overflow: hidden; }
+        
+        /* Navbar */
+        header { background-color: var(--white); box-shadow: 0 4px 15px rgba(0,0,0,0.06); position: fixed; width: 100%; top: 0; z-index: 999; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 0.8rem 2rem; }
+        .nav-logo { height: 45px; display: block; }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
+        .nav-links a { text-decoration: none; color: var(--dark-text); font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--exaver-blue); }
+
+        /* Portada */
+        .hero-cover { height: 100vh; background: url('image_718821.png') no-repeat center center; background-size: contain; padding-top: 70px; }
+        .hero-overlay { background: rgba(15, 44, 89, 0.88); height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; }
+        .hero-content { text-align: center; color: var(--white); }
+        .hero-content h1 { font-size: 3.2rem; font-weight: 800; margin-bottom: 0.8rem; }
+        .tagline { font-size: 2.2rem; font-weight: 800; color: #4FD1C5; margin-bottom: 2.5rem; letter-spacing: 3px; }
+        
+        .btn-main { background-color: var(--exaver-green); color: var(--white); border: none; padding: 1rem 2.5rem; font-size: 1rem; font-weight: 700; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 168, 89, 0.4); transition: transform 0.2s; }
+        .btn-main:hover { transform: scale(1.05); }
+
+        /* Modales */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 44, 89, 0.95); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-window { background: var(--white); width: 90%; max-width: 600px; padding: 3rem; border-radius: 16px; position: relative; color: var(--dark-text); }
+        .modal-window.modal-wide { max-width: 1050px; }
+        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 2rem; color: #a0aec0; cursor: pointer; }
+        
+        h2 { color: var(--final-navy); font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+        .divider { height: 3px; background: var(--exaver-green); width: 60px; margin-bottom: 1.5rem; }
+        .alert-box { background-color: #FFF5F5; color: #C53030; padding: 1.2rem; border-radius: 8px; border-left: 4px solid #E53E3E; margin-top: 1.5rem; font-weight: 500; }
+        .text-content { color: #4A5568; font-size: 1.05rem; line-height: 1.7; }
+
+        /* Grilla de Sesiones */
+        .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .card { padding: 1.8rem; border-radius: 12px; color: var(--white); }
+        .card h3 { font-size: 1.15rem; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; }
+        
+        .bg-rw { background-color: var(--exaver-blue); }        
+        .bg-listening { background-color: var(--exaver-green); } 
+        .bg-speaking { background-color: var(--speaking-gray); }
+        .bg-final { background-color: var(--final-navy); }
+
+        .btn-group { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .btn-session { background: var(--white); color: var(--dark-text); border: none; padding: 0.6rem 0.8rem; font-weight: 700; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+        .btn-session:hover { transform: translateY(-2px); background-color: #EDF2F7; }
+        .long-btn { width: 100%; }
+        
+        .btn-action { display: inline-block; background-color: var(--exaver-blue); color: var(--white); padding: 0.8rem 2rem; text-decoration: none; border-radius: 6px; font-weight: 600; border: none; margin-top: 1.5rem; }
+    </style>
 </head>
 <body>
 
@@ -38,7 +96,7 @@
             <button class="modal-close" onclick="cerrarModal('modal-inicio')">&times;</button>
             <h2>Bienvenidos al Curso</h2>
             <div class="divider"></div>
-            <p class="modal-intro">Curso estratégico diseñado para la preparación óptima del examen de certificación institucional.</p>
+            <p class="text-content">Curso estratégico diseñado para la preparación óptima del examen de certificación institucional.</p>
             <div class="alert-box">
                 <p><strong>🚨 Requisito Indispensable (Sesión 00):</strong> Los alumnos deben haber respondido un examen de muestra (Sample Test) antes del inicio del curso.</p>
             </div>
@@ -49,7 +107,7 @@
         <div class="modal-window modal-wide">
             <button class="modal-close" onclick="cerrarModal('modal-sesiones')">&times;</button>
             <h2>Mapa Curricular por Sesiones</h2>
-            <p class="modal-subtitle">Selecciona un bloque numérico para examinar sus objetivos específicos.</p>
+            <div class="divider"></div>
             
             <div class="modules-grid">
                 <div class="card bg-rw">
@@ -85,7 +143,7 @@
 
                 <div class="card bg-final">
                     <h3>Final Evaluation</h3>
-                    <div class="btn-group justify-center">
+                    <div class="btn-group">
                         <button class="btn-session long-btn" onclick="verDetalle('19_20')">19/20</button>
                     </div>
                 </div>
@@ -113,16 +171,9 @@
     </div>
 
     <script>
-        function abrirModal(id) {
-            document.getElementById(id).classList.add('active');
-        }
-        function cerrarModal(id) {
-            document.getElementById(id).classList.remove('active');
-        }
-        function verDetalle(id) {
-            // Redirige de manera limpia a la nueva ventana dedicada
-            window.open('detalle.html?sesion=' + id, '_blank');
-        }
+        function abrirModal(id) { document.getElementById(id).classList.add('active'); }
+        function cerrarModal(id) { document.getElementById(id).classList.remove('active'); }
+        function verDetalle(id) { window.open('detalle.html?sesion=' + id, '_blank'); }
     </script>
 </body>
 </html>
