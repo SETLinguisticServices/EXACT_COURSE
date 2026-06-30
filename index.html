@@ -3,117 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EXAVER Candidate Training Course</title>
+    <title>EXAVER 1 Candidate Training Course</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- 1. Nombre EXAVER en mayúsculas y 2. Orden de botones de acción solicitado -->
     <header>
         <nav class="navbar">
-            <div class="logo">EXA<span>Ver</span></div>
+            <div class="logo">EXAVER</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#course">Course Map</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#course">Sesiones</a></li>
+                <li><a href="#about">Profesor</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home" class="hero-section">
-        <div class="hero-content">
-            <h1>EXAVER Candidate Training Course</h1>
-            <p>Preparación estratégica integral para la certificación de la Universidad Veracruzana.</p>
-            <a href="#course" class="btn">Explorar Sesiones</a>
-        </div>
-    </section>
+    <div id="main-content">
+        <!-- 3. Cambio de leyenda por "EXAVER 1" -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>EXAVER Candidate Training Course</h1>
+                <p class="tagline">EXAVER 1</p>
+                <a href="#course" class="btn">Explorar Sesiones</a>
+            </div>
+        </section>
 
-    <section class="prerequisite-bar">
-        <p><strong>🚨 Requisito Indispensable (Session 00):</strong> Students must have answered a Sample Test before the course starts.</p>
-    </section>
+        <!-- 4. Leyenda de Requisito Indispensable completamente en español -->
+        <section class="prerequisite-bar">
+            <div class="container">
+                <p><strong>🚨 Requisito Indispensable (Sesión 00):</strong> Los alumnos deben haber respondido un examen de muestra (Sample Test) antes del inicio del curso.</p>
+            </div>
+        </section>
 
-    <section id="course" class="course-container">
-        <h2>Estructura del Curso por Sesiones</h2>
-        <p class="subtitle">Diseño curricular enfocado en deconstrucción y estrategias del examen.</p>
+        <!-- 5. Información en español manteniendo habilidades en inglés -->
+        <section id="course" class="course-container">
+            <h2>Estructura del Curso por Sesiones</h2>
+            <p class="subtitle">Haz clic en cualquier sesión para abrir en una pestaña nueva los detalles y objetivos específicos de aprendizaje.</p>
 
-        <div class="modules-grid">
+            <div class="modules-grid">
+                
+                <!-- Módulo 1: Reading & Writing (7. Azul de Speaking) -->
+                <div class="module-card">
+                    <div class="module-header m-rw">
+                        <h3>Reading & Writing</h3>
+                        <span>Sesiones 01 - 10</span>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li><a href="?sesion=1_2" target="_blank" class="session-link"><strong>01/02:</strong> Presentación de Part 1 y asignación de tareas.</a></li>
+                            <li><a href="?sesion=3_4" target="_blank" class="session-link"><strong>03/04:</strong> Reforzamiento de Part 2 y asignación de tareas.</a></li>
+                            <li><a href="?sesion=5_6" target="_blank" class="session-link"><strong>05/06:</strong> Presentación de Part 3 y asignación de tareas.</a></li>
+                            <li><a href="?sesion=7_8" target="_blank" class="session-link"><strong>07/08:</strong> Presentación de Part 4 y asignación de tareas.</a></li>
+                            <li><a href="?sesion=9_10" target="_blank" class="session-link"><strong>09/10:</strong> Presentación de Part 5 y enfoque en producción escrita.</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Módulo 2: Listening (7. Verde de Final Evaluation) -->
+                <div class="module-card">
+                    <div class="module-header m-listening">
+                        <h3>Listening</h3>
+                        <span>Sesiones 11 - 14</span>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li><a href="?sesion=11" target="_blank" class="session-link"><strong>11:</strong> Presentación de Part 1 y asignación de tareas.</a></li>
+                            <li><a href="?sesion=12" target="_blank" class="session-link"><strong>12:</strong> Reforzamiento de Part 2 y asignación de tareas.</a></li>
+                            <li><a href="?sesion=13" target="_blank" class="session-link"><strong>13:</strong> Presentación de Part 3 y asignación de tareas.</a></li>
+                            <li><a href="?sesion=14" target="_blank" class="session-link"><strong>14:</strong> Presentación de Part 4 y asignación de tareas.</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Módulo 3: Speaking (Gris Oscuro Balanceado) -->
+                <div class="module-card">
+                    <div class="module-header m-speaking">
+                        <h3>Speaking</h3>
+                        <span>Sesiones 15 - 18</span>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li><a href="?sesion=15" target="_blank" class="session-link"><strong>15:</strong> Presentación de Part 1 y asignación de tareas.</a></li>
+                            <li><a href="?sesion=16" target="_blank" class="session-link"><strong>16:</strong> Reforzamiento de Part 2 y asignación de tareas.</a></li>
+                            <li><a href="?sesion=17" target="_blank" class="session-link"><strong>17:</strong> Presentación de Part 3 y asignación de tareas.</a></li>
+                            <li><a href="?sesion=18:</strong> Práctica de Speaking y evaluación formativa.</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Módulo 4: Final Evaluation (Azul Marino Corporativo) -->
+                <div class="module-card">
+                    <div class="module-header m-final">
+                        <h3>Final Evaluation</h3>
+                        <span>Sesiones 19 - 20</span>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li><a href="?sesion=19" target="_blank" class="session-link"><strong>19:</strong> Práctica de examen simulado completo (1.5 Horas).</a></li>
+                            <li><a href="?sesion=20" target="_blank" class="session-link"><strong>20:</strong> Retroalimentación diagnóstica y cierre estratégico.</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Sección Profesor -->
+        <section id="about" class="about-section">
+            <h2>Profesor</h2>
+            <p>Profesor e investigador enfocado en el desarrollo de metodologías y estrategias efectivas para la preparación de exámenes internacionales y certificaciones institucionales.</p>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section id="contact" class="contact-section">
+            <h2>Contacto</h2>
+            <p>¿Tienes preguntas sobre el mapa curricular, los horarios o las evaluaciones de muestra?</p>
+            <a href="mailto:tu-correo@uv.mx" class="btn-contact">Enviar Mensaje Electrónico</a>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 EXAVER Training Course. Diseñado para el éxito del candidato.</p>
+        </footer>
+    </div>
+
+    <!-- 6 y 8. Lógica dinámica interactiva para ventanas secundarias de las sesiones -->
+    <script>
+        const mapaDetalles = {
+            "1_2": { modulo: "Reading & Writing", titulo: "Sesiones 01 & 02: Reading Part 1 – Comprensión Global y Señalizaciones", foco: "Análisis de textos cortos del mundo real (avisos, correos, mensajes).", objetivos: ["Identificar el propósito comunicativo y el contexto de los textos de manera rápida.", "Aprender mecánicas de descarte analizando por qué los 'distractores' semánticos parecen correctos."], tareas: "Ejercicios interactivos de mapeo de sinónimos y emparejamiento contextual." },
+            "3_4": { modulo: "Reading & Writing", titulo: "Sesiones 03 & 04: Reading Part 2 – Emparejamiento de Textos y Cohesión", foco: "Conectar descripciones cortas con perfiles de candidatos o bases de información.", objetivos: ["Dominar el escaneo rápido (skimming y scanning) bajo restricciones de tiempo crítico.", "Aislar palabras clave en perfiles complejos para aplicar técnicas de exclusión rápida."], tareas: "Prácticas intensivas de emparejamiento negativo bajo reloj." },
+            "5_6": { modulo: "Reading & Writing", titulo: "Sesiones 05 & 06: Reading Part 3 – Rellenado de Espacios Estructurales", foco: "Procesamiento de textos largos con oraciones o palabras faltantes (Cloze).", objetivos: ["Entender la cohesión gramatical usando palabras de referencia (pronombres, conectores).", "Aprender a justificar la selección de una respuesta analizando los contextos previos y posteriores."], tareas: "Análisis gramatical antes y después del espacio asignado en muestras." },
+            "7_8": { modulo: "Reading & Writing", titulo: "Sesiones 07 & 08: Reading Part 4 – Comprensión Detallada y Lexical Cloze", foco: "Textos de comprensión profunda enfocados en actitudes, opiniones y estructuras líricas.", objetivos: ["Diferenciar de manera precisa entre hechos explícitos y opiniones implícitas del autor.", "Localizar evidencias en el texto para validar opciones múltiples."], tareas: "Búsqueda interactiva de líneas de evidencia textual." },
+            "9_10": { modulo: "Reading & Writing", titulo: "Sesiones 09 & 10: Reading Part 5 y Producción de Escritura", foco: "Transición del procesamiento pasivo a la generación activa de correos, cartas o ensayos cortos.", objetivos: ["Dominar la rúbrica oficial de EXAVER: Cumplimiento de Tarea, Organización y Recursos Léxicos.", "Estructurar plantillas fijas tanto para contextos de producción formal como informal."], tareas: "Calificación simulada interactiva utilizando textos modelo." },
+            "11": { modulo: "Listening", titulo: "Sesión 11: Listening Part 1 – Información Discreta y Monólogos Cortos", foco: "Identificación de datos específicos (horas, precios, ubicaciones) en audios independientes.", objetivos: ["Manejar el estrés acústico inicial durante la prueba.", "Evitar errores de selección temprana causados por las correcciones en vivo de los hablantes."], tareas: "Simulación de audios con trampas informativas integradas." },
+            "12": { modulo: "Listening", titulo: "Sesión 12: Listening Part 2 – Completado de Frases y Notas", foco: "Rellenar resúmenes u hojas de notas a partir de un monólogo o entrevista larga.", objetivos: ["Predecir categorías gramaticales (sustantivos, números, verbos) antes de que el audio inicie.", "Verificar precisiones fonológicas críticas en terminaciones plurales o de tiempo."], tareas: "Predicción de partes de la oración en notas de muestra." },
+            "13": { modulo: "Listening", titulo: "Sesión 13: Listening Part 3 – Emparejamiento de Múltiples Hablantes", foco: "Escuchar monólogos cortos donde diferentes personas opinan sobre un tema en común.", objetivos: ["Identificar la actitud, el estado de ánimo y sinónimos de sentimientos abstractos.", "Superar el uso de vocabulario literal para enfocarse en la intención discursiva."], tareas: "Mapeo tonal de expresiones y modismos comunes del examen." },
+            "14": { modulo: "Listening", titulo: "Sesión 14: Listening Part 4 – Seguimiento de Conversaciones Extendidas", foco: "Entrevistas largas que requieren rastrear un flujo continuo de ideas u opiniones.", objetivos: ["Mantener la concentración mental sostenida durante audios de 4 a 5 minutos continuos.", "Detectar marcadores de transición de voz que indican el avance a la siguiente pregunta."], tareas: "Práctica dirigida utilizando indicadores de cambio discursivo." },
+            "15": { modulo: "Speaking", titulo: "Sesión 15: Speaking Part 1 – Entrevista Personal e Interacción Social", foco: "Respuestas ágiles a preguntas directas del examinador sobre rutinas, metas y estudios.", objetivos: ["Superar las respuestas automatizadas de una sola palabra.", "Desarrollar la fórmula estructural de responder, justificar y dar un ejemplo anecdótico."], tareas: "Prácticas en parejas para la extensión natural del discurso oral." },
+            "16": { modulo: "Speaking", titulo: "Sesión 16: Speaking Part 2 – Tarea Colaborativa Dinámica", foco: "Escenarios interactivos evaluados en parejas utilizando estímulos visuales.", objetivos: ["Dominar la gestión de turnos de habla e interrupción formal y cortés.", "Garantizar una distribución equitativa del tiempo con el compañero asignado."], tareas: "Ejercicios prácticos con la técnica de diálogo de ida y vuelta continua." },
+            "17": { modulo: "Speaking", titulo: "Sesión 17: Speaking Part 3 – Turno Individual Extendido", foco: "Producción continua e independiente describiendo temáticas específicas sin asistencia.", objetivos: ["Aprender a estructurar un mini-monólogo ordenado usando conectores lógicos.", "Resolver lagunas de vocabulario técnico mediante la paráfrasis sin recurrir al español."], tareas: "Entrenamiento dinámico de circunloquios (explicar un concepto sin decir su nombre)." },
+            "18": { modulo: "Speaking", titulo: "Sesión 18: Simulación Completa y Evaluación Formativa", foco: "Simulacros de examen oral con tiempos rigurosos y criterios de evaluación reales.", objetivos: ["Adaptar el lenguaje corporal y el manejo del estrés al ambiente físico del aula de examen.", "Aprender a co-evaluar usando listas de control simplificadas de la rúbrica."], tareas: "Sesiones de auditoría cruzada con roles alternados de examinador/candidato." },
+            "19": { modulo: "Final Evaluation", titulo: "Sesión 19: Simulación Real de Examen (1.5 Horas)", foco: "Práctica masiva integrada bajo condiciones e intervalos estrictos oficiales.", objetivos: ["Medir la resistencia cognitiva ante la fatiga del examen real.", "Calibrar los tiempos individuales destinados al llenado final de las hojas de respuestas."], tareas: "Aplicación controlada y cronometrada del instrumento de evaluación final." },
+            "20": { modulo: "Final Evaluation", titulo: "Sesión 20: Análisis Diagnóstico y Cierre Estratégico", foco: "Revisión pormenorizada de los datos del simulacro general y tendencias de error.", objetivos: ["Identificar patrones de errores sistemáticos para corregirlos conscientemente.", "Consolidar la seguridad del candidato mediante planes finales personalizados de administración del tiempo."], tareas: "Elaboración del plan personal de prevención de errores en el examen." }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const sesionId = params.get('sesion');
+
+        if (sesionId && mapaDetalles[sesionId]) {
+            const data = mapaDetalles[sesionId];
+            document.title = `Detalles - ${data.titulo}`;
             
-            <div class="module-card">
-                <div class="module-header m-rw">
-                    <h3>Reading & Writing</h3>
-                    <span>Sessions 01 - 10</span>
-                </div>
-                <div class="module-body">
-                    <ul>
-                        <li><strong>01/02:</strong> Reading Part 1 presented & tasks given.</li>
-                        <li><strong>03/04:</strong> Reading Part 2 reinforcement & tasks.</li>
-                        <li><strong>05/06:</strong> Reading Part 3 presented & tasks given.</li>
-                        <li><strong>07/08:</strong> Reading Part 4 presented & tasks given.</li>
-                        <li><strong>09/10:</strong> Reading Part 5 presented & writing focus.</li>
-                    </ul>
-                </div>
-            </div>
+            let objetivosHtml = "";
+            data.objetivos.forEach(obj => { objetivosHtml += `<li>${obj}</li>`; });
 
-            <div class="module-card">
-                <div class="module-header m-listening">
-                    <h3>Listening</h3>
-                    <span>Sessions 11 - 14</span>
+            document.body.innerHTML = `
+                <div class="session-detail-view animate-fade">
+                    <div class="detail-card">
+                        <span class="detail-badge">${data.modulo}</span>
+                        <h1>${data.titulo}</h1>
+                        <hr>
+                        <div class="detail-section">
+                            <h3>🎯 Foco de la Sesión:</h3>
+                            <p>${data.foco}</p>
+                        </div>
+                        <div class="detail-section">
+                            <h3>🚀 Objetivos Críticos:</h3>
+                            <ul>${objetivosHtml}</ul>
+                        </div>
+                        <div class="detail-section">
+                            <h3>📝 Trabajo Práctico / Tareas:</h3>
+                            <p>${data.tareas}</p>
+                        </div>
+                        <button onclick="window.close()" class="btn-close">Cerrar Ventana</button>
+                    </div>
                 </div>
-                <div class="module-body">
-                    <ul>
-                        <li><strong>11:</strong> Listening Part 1 presented & tasks.</li>
-                        <li><strong>12:</strong> Listening Part 2 reinforcement & tasks.</li>
-                        <li><strong>13:</strong> Listening Part 3 presented & tasks.</li>
-                        <li><strong>14:</strong> Listening Part 4 presented & tasks.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="module-card">
-                <div class="module-header m-speaking">
-                    <h3>Speaking</h3>
-                    <span>Sessions 15 - 18</span>
-                </div>
-                <div class="module-body">
-                    <ul>
-                        <li><strong>15:</strong> Speaking Part 1 presented & tasks.</li>
-                        <li><strong>16:</strong> Speaking Part 2 reinforcement & tasks.</li>
-                        <li><strong>17:</strong> Speaking Part 3 presented & tasks.</li>
-                        <li><strong>18:</strong> Speaking Practice & Formative Assessment.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="module-card">
-                <div class="module-header m-final">
-                    <h3>Final Evaluation</h3>
-                    <span>Sessions 19 - 20</span>
-                </div>
-                <div class="module-body">
-                    <ul>
-                        <li><strong>19:</strong> Full Mock Exam Practice (1.5 Hours).</li>
-                        <li><strong>20:</strong> Diagnostic Feedback & Strategic Closure.</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="about" class="about-section">
-        <h2>About Me</h2>
-        <p>Profesor e investigador enfocado en el desarrollo de estrategias efectivas para la adquisición y certificación del idioma inglés.</p>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <h2>Contact</h2>
-        <p>¿Tienes dudas sobre las sesiones o el registro? Escríbeme.</p>
-        <a href="mailto:tu-correo@uv.mx" class="btn-contact">Enviar Correo</a>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 EXAVER Training Course. Diseñado con base en la ruta de aprendizaje institucional.</p>
-    </footer>
-
+            `;
+        }
+    </script>
 </body>
 </html>
