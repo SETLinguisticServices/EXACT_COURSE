@@ -7,173 +7,542 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --exaver-blue: #2B6CB0;     
+            --exaver-blue: #0F2C59;     
             --exaver-green: #00A859;    
-            --speaking-gray: #4A5568;   
-            --final-navy: #0F2C59;      
             --dark-text: #2d3748;
             --white: #ffffff;
+            --light-bg: #f3f7fa;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body, html { height: 100%; background-color: var(--final-navy); overflow: hidden; }
-        
-        /* Navbar */
-        header { background-color: var(--white); box-shadow: 0 4px 15px rgba(0,0,0,0.06); position: fixed; width: 100%; top: 0; z-index: 999; }
-        .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 0.8rem 2rem; }
-        .nav-logo { height: 45px; display: block; }
-        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
-        .nav-links a { text-decoration: none; color: var(--dark-text); font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--exaver-blue); }
 
-        /* Portada */
-        .hero-cover { height: 100vh; background: url('image_718821.png') no-repeat center center; background-size: contain; padding-top: 70px; }
-        .hero-overlay { background: rgba(15, 44, 89, 0.88); height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; }
-        .hero-content { text-align: center; color: var(--white); }
-        .hero-content h1 { font-size: 3.2rem; font-weight: 800; margin-bottom: 0.8rem; }
-        .tagline { font-size: 2.2rem; font-weight: 800; color: #4FD1C5; margin-bottom: 2.5rem; letter-spacing: 3px; }
-        
-        .btn-main { background-color: var(--exaver-green); color: var(--white); border: none; padding: 1rem 2.5rem; font-size: 1rem; font-weight: 700; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 168, 89, 0.4); transition: transform 0.2s; }
-        .btn-main:hover { transform: scale(1.05); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-        /* Modales */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 44, 89, 0.95); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-        .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .modal-window { background: var(--white); width: 90%; max-width: 600px; padding: 3rem; border-radius: 16px; position: relative; color: var(--dark-text); }
-        .modal-window.modal-wide { max-width: 1050px; }
-        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 2rem; color: #a0aec0; cursor: pointer; }
-        
-        h2 { color: var(--final-navy); font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
-        .divider { height: 3px; background: var(--exaver-green); width: 60px; margin-bottom: 1.5rem; }
-        .alert-box { background-color: #FFF5F5; color: #C53030; padding: 1.2rem; border-radius: 8px; border-left: 4px solid #E53E3E; margin-top: 1.5rem; font-weight: 500; }
-        .text-content { color: #4A5568; font-size: 1.05rem; line-height: 1.7; }
+        body, html {
+            height: 100%;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            display: flex;
+            flex-direction: column;
+        }
 
-        /* Grilla de Sesiones */
-        .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .card { padding: 1.8rem; border-radius: 12px; color: var(--white); }
-        .card h3 { font-size: 1.15rem; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; }
-        
-        .bg-rw { background-color: var(--exaver-blue); }        
-        .bg-listening { background-color: var(--exaver-green); } 
-        .bg-speaking { background-color: var(--speaking-gray); }
-        .bg-final { background-color: var(--final-navy); }
+        /* Barra de Navegación */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+        }
 
-        .btn-group { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .btn-session { background: var(--white); color: var(--dark-text); border: none; padding: 0.6rem 0.8rem; font-weight: 700; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
-        .btn-session:hover { transform: translateY(-2px); background-color: #EDF2F7; }
-        .long-btn { width: 100%; }
-        
-        .btn-action { display: inline-block; background-color: var(--exaver-blue); color: var(--white); padding: 0.8rem 2rem; text-decoration: none; border-radius: 6px; font-weight: 600; border: none; margin-top: 1.5rem; }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+        }
+
+        /* Logotipo en Texto (Punto 1) */
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logo-exa { color: var(--exaver-blue); }
+        .logo-ver { color: var(--exaver-green); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--exaver-green);
+        }
+
+        /* Contenedor Principal Adaptable */
+        .main-wrapper {
+            padding-top: 75px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Portada Fija */
+        .hero-cover {
+            width: 100%;
+            height: calc(100vh - 75px);
+            background: url('image_718821.png') no-repeat center center;
+            background-size: contain; 
+            background-color: var(--exaver-blue);
+        }
+
+        .hero-overlay {
+            background: rgba(15, 44, 89, 0.88);
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+        }
+
+        .tagline {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #4FD1C5;
+            margin-bottom: 2.5rem;
+            letter-spacing: 3px;
+        }
+
+        .btn-main {
+            background-color: var(--exaver-green);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 168, 89, 0.4);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+        }
+
+        /* Paneles de Contenido con Transiciones Elegantes (Punto 7) */
+        .view-panel {
+            display: none;
+            background: var(--white);
+            width: 90%;
+            max-width: 650px;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin: 2rem auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .view-panel.modal-wide {
+            max-width: 1100px;
+        }
+
+        .view-panel.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: var(--exaver-blue);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .divider {
+            height: 3px;
+            background: var(--exaver-green);
+            width: 60px;
+            margin-bottom: 1.5rem;
+        }
+
+        .alert-box {
+            background-color: #FFF5F5;
+            color: #C53030;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border-left: 4px solid #E53E3E;
+            margin-top: 1.5rem;
+            font-weight: 500;
+        }
+
+        .text-content {
+            color: #4A5568;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Configuración del Mapa de Sesiones */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            padding: 1.8rem;
+            border-radius: 12px;
+            color: var(--white);
+            background-color: var(--exaver-blue); 
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .btn-session {
+            background-color: var(--exaver-green);
+            color: var(--white);
+            border: none;
+            padding: 0.6rem 0.8rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn-session:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .long-btn {
+            width: 100%;
+        }
+
+        /* Bloque de Detalles Internos */
+        .detail-display {
+            background: #fafbfc;
+            border: 1px solid #e2e8f0;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            min-height: 180px;
+        }
+
+        .detail-display h3 {
+            color: var(--exaver-blue);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .info-block {
+            margin-bottom: 1.2rem;
+        }
+
+        .info-block h4 {
+            color: var(--exaver-green);
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-block p, .info-block ul {
+            color: #4A5568;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .info-block ul {
+            padding-left: 1.2rem;
+        }
+
+        /* Pie de página (Punto 3) */
+        footer {
+            text-align: center;
+            padding: 1.2rem;
+            background-color: var(--exaver-blue);
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+
+        /* DISPOSITIVOS MÓVILES (Punto 2 - Centrado Absoluto) */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.4rem;
+                margin-bottom: 1.8rem;
+            }
+
+            .view-panel {
+                width: 95%;
+                padding: 1.5rem;
+                text-align: center;
+            }
+
+            .divider {
+                margin: 0 auto 1.5rem auto;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+
+            .detail-display {
+                text-align: left;
+                padding: 1.2rem;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <nav class="navbar">
-            <div class="logo-container">
-                <img src="image_718821.png" alt="EXAVER Oficial" class="nav-logo">
-            </div>
+            <!-- Logotipo de Texto Modificado (Punto 1) -->
+            <a onclick="mostrarSeccion('home')" class="logo-text">
+                <span class="logo-exa">EXA</span><span class="logo-ver">VER</span>
+            </a>
             <ul class="nav-links">
-                <li><a href="#" onclick="abrirModal('modal-inicio')">Inicio</a></li>
-                <li><a href="#" onclick="abrirModal('modal-sesiones')">Sesiones</a></li>
-                <li><a href="#" onclick="abrirModal('modal-profesor')">Profesor</a></li>
-                <li><a href="#" onclick="abrirModal('modal-contacto')">Contacto</a></li>
+                <li><a onclick="mostrarSeccion('modal-inicio')">Inicio</a></li>
+                <li><a onclick="mostrarSeccion('modal-sesiones')">Sesiones</a></li>
+                <li><a onclick="mostrarSeccion('modal-profesor')">Profesor</a></li>
+                <li><a onclick="mostrarSeccion('modal-contacto')">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="hero-cover">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1>Candidate Training Course</h1>
-                <p class="tagline">EXAVER 1</p>
-                <button class="btn-main" onclick="abrirModal('modal-sesiones')">Ver Sesiones</button>
-            </div>
-        </div>
-    </main>
+    <div class="main-wrapper">
 
-    <div id="modal-inicio" class="modal-overlay">
-        <div class="modal-window">
-            <button class="modal-close" onclick="cerrarModal('modal-inicio')">&times;</button>
+        <!-- Portada Inicial -->
+        <main id="home" class="hero-cover">
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <h1>Candidate Training Course</h1>
+                    <p class="tagline">EXAVER 1</p>
+                    <button class="btn-main" onclick="mostrarSeccion('modal-sesiones')">Ver Sesiones</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Apartado: Inicio -->
+        <div id="modal-inicio" class="view-panel">
             <h2>Bienvenidos al Curso</h2>
             <div class="divider"></div>
             <p class="text-content">Curso estratégico diseñado para la preparación óptima del examen de certificación institucional.</p>
             <div class="alert-box">
-                <p><strong>🚨 Requisito Indispensable (Sesión 00):</strong> Los alumnos deben haber respondido un examen de muestra (Sample Test) antes del inicio del curso.</p>
+                <p><strong>Requisito Indispensable (Sesión 00):</strong> Los alumnos deben haber respondido un examen de muestra (Sample Test) antes del inicio del curso.</p>
             </div>
         </div>
-    </div>
 
-    <div id="modal-sesiones" class="modal-overlay">
-        <div class="modal-window modal-wide">
-            <button class="modal-close" onclick="cerrarModal('modal-sesiones')">&times;</button>
+        <!-- Apartado: Sesiones (Flujo Corregido - Punto 4) -->
+        <div id="modal-sesiones" class="view-panel modal-wide">
             <h2>Mapa Curricular por Sesiones</h2>
             <div class="divider"></div>
             
             <div class="modules-grid">
-                <div class="card bg-rw">
+                <!-- Reading & Writing -->
+                <div class="card">
                     <h3>Reading & Writing</h3>
                     <div class="btn-group">
-                        <button class="btn-session" onclick="verDetalle('1_2')">01/02</button>
-                        <button class="btn-session" onclick="verDetalle('3_4')">03/04</button>
-                        <button class="btn-session" onclick="verDetalle('5_6')">05/06</button>
-                        <button class="btn-session" onclick="verDetalle('7_8')">07/08</button>
-                        <button class="btn-session" onclick="verDetalle('9_10')">09/10</button>
+                        <button class="btn-session" onclick="cambiarDetalle('1_2')">01/02</button>
+                        <button class="btn-session" onclick="cambiarDetalle('3_4')">03/04</button>
+                        <button class="btn-session" onclick="cambiarDetalle('5_6')">05/06</button>
+                        <button class="btn-session" onclick="cambiarDetalle('7_8')">07/08</button>
+                        <button class="btn-session" onclick="cambiarDetalle('9_10')">09/10</button>
                     </div>
                 </div>
 
-                <div class="card bg-listening">
+                <!-- Listening -->
+                <div class="card">
                     <h3>Listening</h3>
                     <div class="btn-group">
-                        <button class="btn-session" onclick="verDetalle('11')">11</button>
-                        <button class="btn-session" onclick="verDetalle('12')">12</button>
-                        <button class="btn-session" onclick="verDetalle('13')">13</button>
-                        <button class="btn-session" onclick="verDetalle('14')">14</button>
+                        <button class="btn-session" onclick="cambiarDetalle('11')">11</button>
+                        <button class="btn-session" onclick="cambiarDetalle('12')">12</button>
+                        <button class="btn-session" onclick="cambiarDetalle('13')">13</button>
+                        <button class="btn-session" onclick="cambiarDetalle('14')">14</button>
                     </div>
                 </div>
 
-                <div class="card bg-speaking">
+                <!-- Speaking -->
+                <div class="card">
                     <h3>Speaking</h3>
                     <div class="btn-group">
-                        <button class="btn-session" onclick="verDetalle('15')">15</button>
-                        <button class="btn-session" onclick="verDetalle('16')">16</button>
-                        <button class="btn-session" onclick="verDetalle('17')">17</button>
-                        <button class="btn-session" onclick="verDetalle('18')">18</button>
+                        <button class="btn-session" onclick="cambiarDetalle('15')">15</button>
+                        <button class="btn-session" onclick="cambiarDetalle('16')">16</button>
+                        <button class="btn-session" onclick="cambiarDetalle('17')">17</button>
+                        <button class="btn-session" onclick="cambiarDetalle('18')">18</button>
                     </div>
                 </div>
 
-                <div class="card bg-final">
+                <!-- Final Evaluation -->
+                <div class="card">
                     <h3>Final Evaluation</h3>
                     <div class="btn-group">
-                        <button class="btn-session long-btn" onclick="verDetalle('19_20')">19/20</button>
+                        <button class="btn-session long-btn" onclick="cambiarDetalle('19_20')">19/20</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div id="modal-profesor" class="modal-overlay">
-        <div class="modal-window">
-            <button class="modal-close" onclick="cerrarModal('modal-profesor')">&times;</button>
-            <h2>Profesor</h2>
+            <div class="detail-display">
+                <h3 id="panel-titulo">Selecciona una sesión</h3>
+                <div class="info-block">
+                    <h4>Enfoque del Examen</h4>
+                    <p id="panel-foco">Haz clic en cualquiera de los botones verdes numéricos de arriba para consultar el desglose académico de los contenidos correspondientes en esta misma sección.</p>
+                </div>
+                <div class="info-block">
+                    <h4>Objetivos del Aprendizaje</h4>
+                    <ul id="panel-objetivos">
+                        <li>Visualización interactiva e inmediata de metas analíticas del Paper.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apartado: Profesor (Modificado - Punto 5) -->
+        <div id="modal-profesor" class="view-panel">
+            <h2>Samir Huerta</h2>
             <div class="divider"></div>
-            <p class="text-content">Profesor e investigador especializado en la instrucción estratégica del idioma inglés y el desarrollo de competencias para acreditaciones estandarizadas en entornos académicos universitarios.</p>
+            <p class="text-content">Profesor e examinador oficial de EXAVER especializado en la instrucción estratégica del idioma inglés y el desarrollo de competencias para acreditaciones estandarizadas en entornos académicos universitarios.</p>
         </div>
-    </div>
 
-    <div id="modal-contacto" class="modal-overlay">
-        <div class="modal-window">
-            <button class="modal-close" onclick="cerrarModal('modal-contacto')">&times;</button>
+        <!-- Apartado: Contacto (Modificado - Punto 6) -->
+        <div id="modal-contacto" class="view-panel">
             <h2>Contacto</h2>
             <div class="divider"></div>
             <p class="text-content">¿Tienes alguna duda sobre la gestión de tus materiales o las sesiones informativas?</p>
-            <a href="mailto:tu-correo@uv.mx" class="btn-action">Enviar Correo Electrónico</a>
+            <p class="text-content" style="margin-top: 1rem; font-weight: 600; color: var(--exaver-blue);">ceshuerta@uv.mx</p>
         </div>
+
     </div>
 
+    <!-- Pie de página formalizado (Punto 3) -->
+    <footer>
+        &copy; 2026 | EXAVER Training Course | Samir Huerta
+    </footer>
+
     <script>
-        function abrirModal(id) { document.getElementById(id).classList.add('active'); }
-        function cerrarModal(id) { document.getElementById(id).classList.remove('active'); }
-        function verDetalle(id) { window.open('detalle.html?sesion=' + id, '_blank'); }
+        const datosContenido = {
+            "1_2": { t: "Reading & Writing 01/02 — Part 1", f: "Esta sección entrena el Paper de Reading Part 1. Nos enfocamos en comprender avisos, mensajes cortos y señalizaciones del mundo real.", o: ["Identificar con rapidez la intención o advertencia de textos breves.", "Aprender a descartar respuestas incorrectas analizando trampas de vocabulario."] },
+            "3_4": { t: "Reading & Writing 03/04 — Part 2", f: "Esta sección cubre el Paper de Reading Part 2. Trabajamos en emparejar descripciones de personas con perfiles, textos informativos u opciones de bases de datos.", o: ["Dominar la lectura de rastreo rápido para localizar datos clave bajo límite de tiempo.", "Aprender a buscar coincidencias exactas y descartar perfiles que no cumplen los requisitos."] },
+            "5_6": { t: "Reading & Writing 05/06 — Part 3", f: "Esta sección aborda el Paper de Reading Part 3 (ejercicios tipo Cloze). Consiste en leer un texto largo donde faltan palabras y seleccionar la opción gramatical correcta para rellenar los huecos.", o: ["Identificar la continuidad lógica del texto analizando pronombres y conectores.", "Reconocer qué tipo de palabra se necesita evaluando el contexto inmediato antes y después del espacio."] },
+            "7_8": { t: "Reading & Writing 07/08 — Part 4", f: "Esta sección entrena el Paper de Reading Part 4. Está dedicada a la lectura de comprensión profunda en textos extensos, donde se evalúan las opiniones del autor y detalles minuciosos.", o: ["Aprender a diferenciar de forma clara entre datos reales u objetivos y opiniones implícitas.", "Localizar evidencias textuales dentro de los párrafos para validar la opción correcta."] },
+            "9_10": { t: "Reading & Writing 09/10 — Part 5", f: "Esta sección cierra el bloque enfocándose en el Paper de Reading Part 5 y el área de escritura de producción. Se practica la redacción guiada de textos cortos como correos o cartas formales e informales.", o: ["Conocer y aplicar los criterios de evaluación del examen: organización, vocabulario y cumplimiento de la tarea.", "Estructurar textos organizados utilizando plantillas prácticas de apertura y cierre."] },
+            "11": { t: "Listening 11 — Part 1", f: "Esta sección cubre el Paper de Listening Part 1. Se centra en escuchar grabaciones o monólogos muy breves para identificar datos específicos muy puntuales (como horas, precios o nombres).", o: ["Aprender a retener información precisa en la mente mientras se maneja el audio de la prueba.", "Evitar caer en respuestas falsas causadas por las correcciones que hacen los propios hablantes en el audio."] },
+            "12": { t: "Listening 12 — Part 2", f: "Esta sección entrena el Paper de Listening Part 2. Consiste en escuchar una entrevista o monólogo largo y completar un formulario o un resumen con las palabras precisas que faltan.", o: ["Desarrollar la habilidad de predecir si el espacio en blanco requiere un número, un sustantivo o un verbo antes de escuchar el audio.", "Asegurar que la ortografía de las respuestas sea exacta para no perder puntaje."] },
+            "13": { t: "Listening 13 — Part 3", f: "Esta sección se enfoca en el Paper de Listening Part 3. Consiste en escuchar a múltiples hablantes que opinan sobre un tema común para identificar sus actitudes o sentimientos.", o: ["Aprender a identificar estados de ánimo a través de la entonación y palabras clave.", "Entender expresiones cotidianas y frases hechas más allá del significado de cada palabra."] },
+            "14": { t: "Listening 14 — Part 4", f: "Esta sección cierra el área con el Paper de Listening Part 4. Trabajamos en el seguimiento de conversaciones o entrevistas extensas con intercambio continuo de ideas de principio a fin.", o: ["Mantener la concentración mental en grabaciones largas de 4 a 5 minutos continuos.", "Detectar las palabras de transición que indican que el audio avanzó a la siguiente pregunta."] },
+            "15": { t: "Speaking 15 — Part 1", f: "Esta sección inicia el entrenamiento del Paper de Speaking Part 1. Consiste en simular la entrevista personal directa con el examinador sobre temas familiares como rutinas, pasatiempos y estudios.", o: ["Aprender a extender las respuestas de forma natural para evitar contestar con una sola palabra.", "Estructurar explicaciones fluidas combinando tu opinión con un ejemplo breve."] },
+            "16": { t: "Speaking 16 — Part 2", f: "Esta sección cubre el Paper de Speaking Part 2. Se practica la tarea colaborativa donde interactúas en pareja utilizando material visual de apoyo.", o: ["Aprender a respetar turnos de habla e invitar cordialmente a tu compañero a participar.", "Garantizar una distribución equilibrada del tiempo de conversación entre ambos."] },
+            "17": { t: "Speaking 17 — Part 3", f: "Esta sección aborda el Paper de Speaking Part 3. Está dedicada al turno extendido individual, donde debes hablar de forma continua sobre un tema sin ayuda del examinador.", o: ["Aprender a ordenar tus ideas lógicamente usando conectores del discurso.", "Utilizar técnicas de paráfrasis (explicar algo de otra forma) cuando olvides una palabra específica."] },
+            "18": { t: "Speaking 18 — Práctica y Evaluación", f: "Esta sesión reúne las fases del Paper de Speaking para realizar un simulacro oral con tiempos estrictos bajo los criterios reales de evaluación oficiales.", o: ["Controlar el estrés adaptándote a las dinámicas físicas reales de la prueba presencial.", "Aprender a autoevaluarte y evaluar a tus compañeros usando las listas de cotejo oficiales."] },
+            "19_20": { t: "Final Evaluation 19/20 — Cierre", f: "Esta sección final integra un simulacro completo del examen (1.5 horas) bajo condiciones oficiales, seguido de una revisión a fondo de los resultados.", o: ["Medir la resistencia mental frente a los tiempos de examen y practicar el vaciado correcto en la hoja de respuestas.", "Identificar errores comunes persistentes para corregirlos de manera consciente antes del examen definitivo."] }
+        };
+
+        // Corrección del Sistema de Control de Navegación e Inicialización Limpia (Punto 4 y 7)
+        function mostrarSeccion(id) {
+            const homeEl = document.getElementById('home');
+            
+            // Ocultar primero todos los paneles activos con remoción de clases de transición
+            document.querySelectorAll('.view-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+
+            if (id === 'home') {
+                homeEl.style.display = 'block';
+            } else {
+                homeEl.style.display = 'none';
+                const targetPanel = document.getElementById(id);
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                    
+                    // Resetear el visor de sesiones por defecto si se reingresa al panel
+                    if (id === 'modal-sesiones') {
+                        document.getElementById('panel-titulo').innerText = "Selecciona una sesión";
+                        document.getElementById('panel-foco').innerText = "Haz clic en cualquiera de los botones verdes numéricos de arriba para consultar el desglose académico de los contenidos correspondientes en esta misma sección.";
+                        document.getElementById('panel-objetivos').innerHTML = "<li>Visualización interactiva e inmediata de metas analíticas del Paper.</li>";
+                    }
+                }
+            }
+        }
+
+        function cambiarDetalle(id) {
+            if (datosContenido[id]) {
+                const info = datosContenido[id];
+                const titulo = document.getElementById('panel-titulo');
+                const foco = document.getElementById('panel-foco');
+                const objetivos = document.getElementById('panel-objetivos');
+
+                // Pequeña transición de desvanecimiento interna para el cambio de texto
+                [titulo, foco, objetivos].forEach(el => el.style.opacity = 0);
+
+                setTimeout(() => {
+                    titulo.innerText = info.t;
+                    foco.innerText = info.f;
+                    
+                    let liHTML = "";
+                    info.o.forEach(obj => { liHTML += `<li>${obj}</li>`; });
+                    objetivos.innerHTML = liHTML;
+
+                    [titulo, foco, objetivos].forEach(el => el.style.opacity = 1);
+                }, 150);
+            }
+        }
+
+        // Ejecución inicial inequívoca
+        window.addEventListener('DOMContentLoaded', () => {
+            mostrarSeccion('home');
+        });
     </script>
 </body>
 </html>
