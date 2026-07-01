@@ -77,31 +77,26 @@
             color: var(--exaver-green);
         }
 
-        /* Contenedor Principal Absoluto */
+        /* Contenedor Principal Ajustado sin espacios ni divisiones adicionales */
         .main-wrapper {
-            padding-top: 75px;
+            padding-top: 61px; /* Ajuste exacto a la altura del menú */
             flex: 1;
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
-            align-items: center;
-            justify-items: center;
+            display: flex;
+            flex-direction: column;
             width: 100%;
             position: relative;
         }
 
-        /* Portada Fija con Soporte de Transición */
+        /* Portada Fija Ocupando todo el espacio disponible */
         .hero-cover {
-            grid-area: 1 / 1 / 2 / 2;
+            display: none;
             width: 100%;
-            height: calc(100vh - 75px);
+            flex: 1;
             background: url('image_718821.png') no-repeat center center;
             background-size: contain; 
             background-color: var(--exaver-blue);
-            z-index: 5;
             opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
+            transition: opacity 0.35s ease;
         }
 
         .hero-overlay {
@@ -150,33 +145,35 @@
             transform: scale(1.05);
         }
 
-        /* Paneles de Contenido con Transición de Desvanecido Real (Punto 1) */
+        /* Paneles de Contenido con Transición de Desvanecido e Integración Limpia */
         .view-panel {
-            grid-area: 1 / 1 / 2 / 2;
+            display: none;
             background: var(--white);
             width: 90%;
             max-width: 650px;
             padding: 3rem;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin: 2rem auto;
-            z-index: 1;
+            margin: 3rem auto; /* Centrado vertical natural sin generar bordes extraños */
             opacity: 0;
-            visibility: hidden;
             transform: translateY(10px);
-            transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+            transition: opacity 0.35s ease, transform 0.35s ease;
         }
 
         .view-panel.modal-wide {
             max-width: 1100px;
         }
 
-        /* Clase Activa para Controlar Transiciones */
-        .view-panel.active, .hero-cover.active {
+        /* Activación limpia mediante Flex/Block y Opacidad controlada */
+        .hero-cover.active {
+            display: flex;
             opacity: 1;
-            visibility: visible;
+        }
+
+        .view-panel.active {
+            display: block;
+            opacity: 1;
             transform: translateY(0);
-            z-index: 10;
         }
 
         h2 {
@@ -202,14 +199,14 @@
             border-left: 4px solid #E53E3E;
             margin-top: 1.5rem;
             font-weight: 500;
-            text-align: justify; /* Texto Justificado (Punto 3) */
+            text-align: justify;
         }
 
         .text-content {
             color: #4A5568;
             font-size: 1.05rem;
             line-height: 1.7;
-            text-align: justify; /* Texto Justificado (Punto 3) */
+            text-align: justify;
         }
 
         /* Configuración del Mapa de Sesiones */
@@ -261,7 +258,7 @@
             width: 100%;
         }
 
-        /* Bloque de Detalles Internos Justificados (Punto 3) */
+        /* Bloque de Detalles Internos Justificados */
         .detail-display {
             background: #fafbfc;
             border: 1px solid #e2e8f0;
@@ -295,7 +292,7 @@
             color: #4A5568;
             line-height: 1.6;
             font-size: 0.95rem;
-            text-align: justify; /* Texto Justificado (Punto 3) */
+            text-align: justify;
             transition: opacity 0.2s ease;
         }
 
@@ -303,7 +300,7 @@
             padding-left: 1.2rem;
         }
 
-        /* Pie de página */
+        /* Pie de página perfectamente acoplado */
         footer {
             text-align: center;
             padding: 1.2rem;
@@ -313,7 +310,7 @@
             font-weight: 500;
             letter-spacing: 0.5px;
             width: 100%;
-            z-index: 20;
+            margin-top: auto; /* Empuja el footer al fondo de la ventana de forma fluida */
         }
 
         /* DISPOSITIVOS MÓVILES */
@@ -331,6 +328,14 @@
                 justify-content: center;
             }
 
+            .main-wrapper {
+                padding-top: 105px; /* Compensa la barra expandida en móvil */
+            }
+
+            .hero-cover {
+                height: calc(100vh - 105px);
+            }
+
             .hero-content h1 {
                 font-size: 2rem;
             }
@@ -343,6 +348,7 @@
             .view-panel {
                 width: 95%;
                 padding: 1.5rem;
+                margin: 1.5rem auto;
             }
 
             .modules-grid {
@@ -377,7 +383,6 @@
 
     <div class="main-wrapper">
 
-        <!-- Portada Inicial -->
         <main id="home" class="hero-cover">
             <div class="hero-overlay">
                 <div class="hero-content">
@@ -388,7 +393,6 @@
             </div>
         </main>
 
-        <!-- Apartado: Inicio -->
         <div id="modal-inicio" class="view-panel">
             <h2>Bienvenidos al Curso</h2>
             <div class="divider"></div>
@@ -398,7 +402,6 @@
             </div>
         </div>
 
-        <!-- Apartado: Sesiones -->
         <div id="modal-sesiones" class="view-panel modal-wide">
             <h2>Mapa Curricular por Sesiones</h2>
             <div class="divider"></div>
@@ -458,14 +461,12 @@
             </div>
         </div>
 
-        <!-- Apartado: Profesor (Corrección Gramatical - Punto 2) -->
         <div id="modal-profesor" class="view-panel">
             <h2>Samir Huerta</h2>
             <div class="divider"></div>
             <p class="text-content">Profesor y examinador oficial de EXAVER especializado en la instrucción estratégica del idioma inglés y el desarrollo de competencias para acreditaciones estandarizadas en entornos académicos universitarios.</p>
         </div>
 
-        <!-- Apartado: Contacto -->
         <div id="modal-contacto" class="view-panel">
             <h2>Contacto</h2>
             <div class="divider"></div>
@@ -489,7 +490,7 @@
             "11": { t: "Listening 11 — Part 1", f: "Esta sección cubre el Paper de Listening Part 1. Se centra en escuchar grabaciones o monólogos muy breves para identificar datos específicos muy puntuales (como horas, precios o nombres).", o: ["Aprender a retener información precisa en la mente mientras se maneja el audio de la prueba.", "Evitar caer en respuestas falsas causadas por las correcciones que hacen los propios hablantes en el audio."] },
             "12": { t: "Listening 12 — Part 2", f: "Esta sección entrena el Paper de Listening Part 2. Consiste en escuchar una entrevista o monólogo largo y completar un formulario o un resumen con las palabras precisas que faltan.", o: ["Desarrollar la habilidad de predecir si el espacio en blanco requiere un número, un sustantivo o un verbo antes de escuchar el audio.", "Asegurar que la ortografía de las respuestas sea exactas para no perder puntaje."] },
             "13": { t: "Listening 13 — Part 3", f: "Esta sección se enfoca en el Paper de Listening Part 3. Consiste en escuchar a múltiples hablantes que opinan sobre un tema común para identificar sus actitudes o sentimientos.", o: ["Aprender a identificar estados de ánimo a través de la entonación y palabras clave.", "Entender expresiones cotidianas y frases hechas más allá del significado de cada palabra."] },
-            "14": { t: "Listening 14 — Part 4", f: "Esta sección cierra el área con el Paper de Listening Part 4. Trabajamos en el seguimiento de conversaciones o entrevistas extensas con intercambio continuo de ideas de principio a fin.", o: ["Mantener la concentración mental en grabaciones largas de 4 a 5 minutos continuos.", "Detectar las palabras de transición que indican que el audio avanzó a la siguiente pregunta."] },
+            "14": { t: "Listening 14 — Part 4", f: "Esta sección cierra el área con el Paper de Listening Part 4. Trabajamos en el seguimiento de conversaciones o entrevistas extensas con intercambio continuo de ideas de principio a fin.", o: ["Mantener la concentración mental en grabaciones largas de 4 a 5 minutos continuos.", "Detectar las palabras de transition que indican que el audio avanzó a la siguiente pregunta."] },
             "15": { t: "Speaking 15 — Part 1", f: "Esta sección inicia el entrenamiento del Paper de Speaking Part 1. Consiste en simular la entrevista personal directa con el examinador sobre temas familiares como rutinas, pasatiempos y estudios.", o: ["Aprender a extender las respuestas de forma natural para evitar contestar con una sola palabra.", "Estructurar explicaciones fluidas combinando tu opinión con un ejemplo breve."] },
             "16": { t: "Speaking 16 — Part 2", f: "Esta sección cubre el Paper de Speaking Part 2. Se practica la tarea colaborativa donde interactúas en pareja utilizando material visual de apoyo.", o: ["Aprender a respetar turnos de habla e invitar cordialmente a tu compañero a participar.", "Garantizar una distribución equilibrada del tiempo de conversación entre ambos."] },
             "17": { t: "Speaking 17 — Part 3", f: "Esta sección aborda el Paper de Speaking Part 3. Está dedicada al turno extendido individual, donde debes hablar de forma continua sobre un tema sin ayuda del examinador.", o: ["Aprender a ordenar tus ideas lógicamente usando conectores del discurso.", "Utilizar técnicas de paráfrasis (explicar algo de otra forma) cuando olvides una palabra específica."] },
@@ -497,27 +498,33 @@
             "19_20": { t: "Final Evaluation 19/20 — Cierre", f: "Esta sección final integra un simulacro completo del examen (1.5 horas) bajo condiciones oficiales, seguido de una revisión a fondo de los resultados.", o: ["Medir la resistencia mental frente a los tiempos de examen y practicar el vaciado correcto en la hoja de respuestas.", "Identificar errores comunes persistentes para corregirlos de manera consciente antes del examen definitivo."] }
         };
 
-        // Sistema de navegación corregido con soporte de desvanecido real (Punto 1)
         function mostrarSeccion(id) {
-            // Desactivar todos los paneles visibles simultáneamente de manera fluida
+            // Ocultar de inmediato todos los paneles quitando la clase activa
             document.querySelectorAll('.view-panel, .hero-cover').forEach(el => {
                 el.classList.remove('active');
+                el.style.display = 'none';
             });
 
-            // Dar un ligero margen para que el navegador ejecute el cambio visual
+            // Dar un margen mínimo para que actúe la animación del desvanecido
             setTimeout(() => {
                 const target = document.getElementById(id);
                 if (target) {
+                    if (id === 'home') {
+                        target.style.display = 'flex';
+                    } else {
+                        target.style.display = 'block';
+                    }
+                    // Forzar el reflujo del navegador para asegurar la transición suave de opacidad
+                    target.offsetHeight; 
                     target.classList.add('active');
                     
-                    // Resetear el visor de sesiones por defecto si se reingresa al panel
                     if (id === 'modal-sesiones') {
                         document.getElementById('panel-titulo').innerText = "Selecciona una sesión";
                         document.getElementById('panel-foco').innerText = "Haz clic en cualquiera de los botones verdes numéricos de arriba para consultar el desglose académico de los contenidos correspondientes en esta misma sección.";
                         document.getElementById('panel-objetivos').innerHTML = "<li>Visualización interactiva e inmediata de metas analíticas del Paper.</li>";
                     }
                 }
-            }, 50);
+            }, 30);
         }
 
         function cambiarDetalle(id) {
@@ -527,7 +534,6 @@
                 const foco = document.getElementById('panel-foco');
                 const objetivos = document.getElementById('panel-objetivos');
 
-                // Desvanecido de salida en el bloque interno
                 [titulo, foco, objetivos].forEach(el => el.style.opacity = 0);
 
                 setTimeout(() => {
@@ -538,7 +544,6 @@
                     info.o.forEach(obj => { liHTML += `<li>${obj}</li>`; });
                     objetivos.innerHTML = liHTML;
 
-                    // Desvanecido de entrada con la nueva información
                     [titulo, foco, objetivos].forEach(el => el.style.opacity = 1);
                 }, 150);
             }
