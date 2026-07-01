@@ -48,7 +48,6 @@
             padding: 0.8rem 2rem;
         }
 
-        /* Logotipo en Texto (Punto 1) */
         .logo-text {
             font-size: 1.5rem;
             font-weight: 800;
@@ -78,23 +77,31 @@
             color: var(--exaver-green);
         }
 
-        /* Contenedor Principal Adaptable */
+        /* Contenedor Principal Absoluto */
         .main-wrapper {
             padding-top: 75px;
             flex: 1;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
             align-items: center;
-            justify-content: center;
+            justify-items: center;
             width: 100%;
+            position: relative;
         }
 
-        /* Portada Fija */
+        /* Portada Fija con Soporte de Transición */
         .hero-cover {
+            grid-area: 1 / 1 / 2 / 2;
             width: 100%;
             height: calc(100vh - 75px);
             background: url('image_718821.png') no-repeat center center;
             background-size: contain; 
             background-color: var(--exaver-blue);
+            z-index: 5;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
         }
 
         .hero-overlay {
@@ -136,16 +143,16 @@
             border-radius: 30px;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 168, 89, 0.4);
-            transition: transform 0.2s ease, background-color 0.2s ease;
+            transition: transform 0.2s ease;
         }
 
         .btn-main:hover {
             transform: scale(1.05);
         }
 
-        /* Paneles de Contenido con Transiciones Elegantes (Punto 7) */
+        /* Paneles de Contenido con Transición de Desvanecido Real (Punto 1) */
         .view-panel {
-            display: none;
+            grid-area: 1 / 1 / 2 / 2;
             background: var(--white);
             width: 90%;
             max-width: 650px;
@@ -153,19 +160,23 @@
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             margin: 2rem auto;
+            z-index: 1;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
         }
 
         .view-panel.modal-wide {
             max-width: 1100px;
         }
 
-        .view-panel.active {
-            display: block;
+        /* Clase Activa para Controlar Transiciones */
+        .view-panel.active, .hero-cover.active {
             opacity: 1;
+            visibility: visible;
             transform: translateY(0);
+            z-index: 10;
         }
 
         h2 {
@@ -173,13 +184,14 @@
             font-size: 2rem;
             font-weight: 800;
             margin-bottom: 1rem;
+            text-align: center;
         }
 
         .divider {
             height: 3px;
             background: var(--exaver-green);
             width: 60px;
-            margin-bottom: 1.5rem;
+            margin: 0 auto 1.5rem auto;
         }
 
         .alert-box {
@@ -190,12 +202,14 @@
             border-left: 4px solid #E53E3E;
             margin-top: 1.5rem;
             font-weight: 500;
+            text-align: justify; /* Texto Justificado (Punto 3) */
         }
 
         .text-content {
             color: #4A5568;
             font-size: 1.05rem;
             line-height: 1.7;
+            text-align: justify; /* Texto Justificado (Punto 3) */
         }
 
         /* Configuración del Mapa de Sesiones */
@@ -218,6 +232,7 @@
             margin-bottom: 1.2rem;
             border-bottom: 1px solid rgba(255,255,255,0.2);
             padding-bottom: 0.5rem;
+            text-align: center;
         }
 
         .btn-group {
@@ -246,7 +261,7 @@
             width: 100%;
         }
 
-        /* Bloque de Detalles Internos */
+        /* Bloque de Detalles Internos Justificados (Punto 3) */
         .detail-display {
             background: #fafbfc;
             border: 1px solid #e2e8f0;
@@ -260,6 +275,7 @@
             color: var(--exaver-blue);
             margin-bottom: 1rem;
             font-weight: 800;
+            text-align: left;
         }
 
         .info-block {
@@ -272,19 +288,22 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            text-align: left;
         }
 
         .info-block p, .info-block ul {
             color: #4A5568;
             line-height: 1.6;
             font-size: 0.95rem;
+            text-align: justify; /* Texto Justificado (Punto 3) */
+            transition: opacity 0.2s ease;
         }
 
         .info-block ul {
             padding-left: 1.2rem;
         }
 
-        /* Pie de página (Punto 3) */
+        /* Pie de página */
         footer {
             text-align: center;
             padding: 1.2rem;
@@ -294,9 +313,10 @@
             font-weight: 500;
             letter-spacing: 0.5px;
             width: 100%;
+            z-index: 20;
         }
 
-        /* DISPOSITIVOS MÓVILES (Punto 2 - Centrado Absoluto) */
+        /* DISPOSITIVOS MÓVILES */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -323,11 +343,6 @@
             .view-panel {
                 width: 95%;
                 padding: 1.5rem;
-                text-align: center;
-            }
-
-            .divider {
-                margin: 0 auto 1.5rem auto;
             }
 
             .modules-grid {
@@ -339,7 +354,6 @@
             }
 
             .detail-display {
-                text-align: left;
                 padding: 1.2rem;
             }
         }
@@ -349,7 +363,6 @@
 
     <header>
         <nav class="navbar">
-            <!-- Logotipo de Texto Modificado (Punto 1) -->
             <a onclick="mostrarSeccion('home')" class="logo-text">
                 <span class="logo-exa">EXA</span><span class="logo-ver">VER</span>
             </a>
@@ -385,13 +398,12 @@
             </div>
         </div>
 
-        <!-- Apartado: Sesiones (Flujo Corregido - Punto 4) -->
+        <!-- Apartado: Sesiones -->
         <div id="modal-sesiones" class="view-panel modal-wide">
             <h2>Mapa Curricular por Sesiones</h2>
             <div class="divider"></div>
             
             <div class="modules-grid">
-                <!-- Reading & Writing -->
                 <div class="card">
                     <h3>Reading & Writing</h3>
                     <div class="btn-group">
@@ -403,7 +415,6 @@
                     </div>
                 </div>
 
-                <!-- Listening -->
                 <div class="card">
                     <h3>Listening</h3>
                     <div class="btn-group">
@@ -414,7 +425,6 @@
                     </div>
                 </div>
 
-                <!-- Speaking -->
                 <div class="card">
                     <h3>Speaking</h3>
                     <div class="btn-group">
@@ -425,7 +435,6 @@
                     </div>
                 </div>
 
-                <!-- Final Evaluation -->
                 <div class="card">
                     <h3>Final Evaluation</h3>
                     <div class="btn-group">
@@ -449,24 +458,23 @@
             </div>
         </div>
 
-        <!-- Apartado: Profesor (Modificado - Punto 5) -->
+        <!-- Apartado: Profesor (Corrección Gramatical - Punto 2) -->
         <div id="modal-profesor" class="view-panel">
             <h2>Samir Huerta</h2>
             <div class="divider"></div>
-            <p class="text-content">Profesor e examinador oficial de EXAVER especializado en la instrucción estratégica del idioma inglés y el desarrollo de competencias para acreditaciones estandarizadas en entornos académicos universitarios.</p>
+            <p class="text-content">Profesor y examinador oficial de EXAVER especializado en la instrucción estratégica del idioma inglés y el desarrollo de competencias para acreditaciones estandarizadas en entornos académicos universitarios.</p>
         </div>
 
-        <!-- Apartado: Contacto (Modificado - Punto 6) -->
+        <!-- Apartado: Contacto -->
         <div id="modal-contacto" class="view-panel">
             <h2>Contacto</h2>
             <div class="divider"></div>
-            <p class="text-content">¿Tienes alguna duda sobre la gestión de tus materiales o las sesiones informativas?</p>
-            <p class="text-content" style="margin-top: 1rem; font-weight: 600; color: var(--exaver-blue);">ceshuerta@uv.mx</p>
+            <p class="text-content" style="text-align: center; margin-bottom: 1rem;">¿Tienes alguna duda sobre la gestión de tus materiales o las sesiones informativas?</p>
+            <p class="text-content" style="text-align: center; font-weight: 600; color: var(--exaver-blue); font-size: 1.2rem;">ceshuerta@uv.mx</p>
         </div>
 
     </div>
 
-    <!-- Pie de página formalizado (Punto 3) -->
     <footer>
         &copy; 2026 | EXAVER Training Course | Samir Huerta
     </footer>
@@ -479,7 +487,7 @@
             "7_8": { t: "Reading & Writing 07/08 — Part 4", f: "Esta sección entrena el Paper de Reading Part 4. Está dedicada a la lectura de comprensión profunda en textos extensos, donde se evalúan las opiniones del autor y detalles minuciosos.", o: ["Aprender a diferenciar de forma clara entre datos reales u objetivos y opiniones implícitas.", "Localizar evidencias textuales dentro de los párrafos para validar la opción correcta."] },
             "9_10": { t: "Reading & Writing 09/10 — Part 5", f: "Esta sección cierra el bloque enfocándose en el Paper de Reading Part 5 y el área de escritura de producción. Se practica la redacción guiada de textos cortos como correos o cartas formales e informales.", o: ["Conocer y aplicar los criterios de evaluación del examen: organización, vocabulario y cumplimiento de la tarea.", "Estructurar textos organizados utilizando plantillas prácticas de apertura y cierre."] },
             "11": { t: "Listening 11 — Part 1", f: "Esta sección cubre el Paper de Listening Part 1. Se centra en escuchar grabaciones o monólogos muy breves para identificar datos específicos muy puntuales (como horas, precios o nombres).", o: ["Aprender a retener información precisa en la mente mientras se maneja el audio de la prueba.", "Evitar caer en respuestas falsas causadas por las correcciones que hacen los propios hablantes en el audio."] },
-            "12": { t: "Listening 12 — Part 2", f: "Esta sección entrena el Paper de Listening Part 2. Consiste en escuchar una entrevista o monólogo largo y completar un formulario o un resumen con las palabras precisas que faltan.", o: ["Desarrollar la habilidad de predecir si el espacio en blanco requiere un número, un sustantivo o un verbo antes de escuchar el audio.", "Asegurar que la ortografía de las respuestas sea exacta para no perder puntaje."] },
+            "12": { t: "Listening 12 — Part 2", f: "Esta sección entrena el Paper de Listening Part 2. Consiste en escuchar una entrevista o monólogo largo y completar un formulario o un resumen con las palabras precisas que faltan.", o: ["Desarrollar la habilidad de predecir si el espacio en blanco requiere un número, un sustantivo o un verbo antes de escuchar el audio.", "Asegurar que la ortografía de las respuestas sea exactas para no perder puntaje."] },
             "13": { t: "Listening 13 — Part 3", f: "Esta sección se enfoca en el Paper de Listening Part 3. Consiste en escuchar a múltiples hablantes que opinan sobre un tema común para identificar sus actitudes o sentimientos.", o: ["Aprender a identificar estados de ánimo a través de la entonación y palabras clave.", "Entender expresiones cotidianas y frases hechas más allá del significado de cada palabra."] },
             "14": { t: "Listening 14 — Part 4", f: "Esta sección cierra el área con el Paper de Listening Part 4. Trabajamos en el seguimiento de conversaciones o entrevistas extensas con intercambio continuo de ideas de principio a fin.", o: ["Mantener la concentración mental en grabaciones largas de 4 a 5 minutos continuos.", "Detectar las palabras de transición que indican que el audio avanzó a la siguiente pregunta."] },
             "15": { t: "Speaking 15 — Part 1", f: "Esta sección inicia el entrenamiento del Paper de Speaking Part 1. Consiste en simular la entrevista personal directa con el examinador sobre temas familiares como rutinas, pasatiempos y estudios.", o: ["Aprender a extender las respuestas de forma natural para evitar contestar con una sola palabra.", "Estructurar explicaciones fluidas combinando tu opinión con un ejemplo breve."] },
@@ -489,22 +497,18 @@
             "19_20": { t: "Final Evaluation 19/20 — Cierre", f: "Esta sección final integra un simulacro completo del examen (1.5 horas) bajo condiciones oficiales, seguido de una revisión a fondo de los resultados.", o: ["Medir la resistencia mental frente a los tiempos de examen y practicar el vaciado correcto en la hoja de respuestas.", "Identificar errores comunes persistentes para corregirlos de manera consciente antes del examen definitivo."] }
         };
 
-        // Corrección del Sistema de Control de Navegación e Inicialización Limpia (Punto 4 y 7)
+        // Sistema de navegación corregido con soporte de desvanecido real (Punto 1)
         function mostrarSeccion(id) {
-            const homeEl = document.getElementById('home');
-            
-            // Ocultar primero todos los paneles activos con remoción de clases de transición
-            document.querySelectorAll('.view-panel').forEach(panel => {
-                panel.classList.remove('active');
+            // Desactivar todos los paneles visibles simultáneamente de manera fluida
+            document.querySelectorAll('.view-panel, .hero-cover').forEach(el => {
+                el.classList.remove('active');
             });
 
-            if (id === 'home') {
-                homeEl.style.display = 'block';
-            } else {
-                homeEl.style.display = 'none';
-                const targetPanel = document.getElementById(id);
-                if (targetPanel) {
-                    targetPanel.classList.add('active');
+            // Dar un ligero margen para que el navegador ejecute el cambio visual
+            setTimeout(() => {
+                const target = document.getElementById(id);
+                if (target) {
+                    target.classList.add('active');
                     
                     // Resetear el visor de sesiones por defecto si se reingresa al panel
                     if (id === 'modal-sesiones') {
@@ -513,7 +517,7 @@
                         document.getElementById('panel-objetivos').innerHTML = "<li>Visualización interactiva e inmediata de metas analíticas del Paper.</li>";
                     }
                 }
-            }
+            }, 50);
         }
 
         function cambiarDetalle(id) {
@@ -523,7 +527,7 @@
                 const foco = document.getElementById('panel-foco');
                 const objetivos = document.getElementById('panel-objetivos');
 
-                // Pequeña transición de desvanecimiento interna para el cambio de texto
+                // Desvanecido de salida en el bloque interno
                 [titulo, foco, objetivos].forEach(el => el.style.opacity = 0);
 
                 setTimeout(() => {
@@ -534,12 +538,12 @@
                     info.o.forEach(obj => { liHTML += `<li>${obj}</li>`; });
                     objetivos.innerHTML = liHTML;
 
+                    // Desvanecido de entrada con la nueva información
                     [titulo, foco, objetivos].forEach(el => el.style.opacity = 1);
                 }, 150);
             }
         }
 
-        // Ejecución inicial inequívoca
         window.addEventListener('DOMContentLoaded', () => {
             mostrarSeccion('home');
         });
